@@ -1,13 +1,13 @@
 import { FC, MouseEventHandler, useEffect, useRef, useState, MouseEvent } from 'react';
 import { Cell, memory, Universe } from '@nx-rs/lib-rs';
 
-const CELL_SIZE_PX = 10;
+const CELL_SIZE_PX = 5;
 
 const GRID_COLOR = "#CCCCCC";
 const DEAD_COLOR = "#000000";
 const ALIVE_COLOR = "#FFFFFF";
-const HEIGHT = 50;
-const WIDTH = 100;
+const HEIGHT = 100;
+const WIDTH = 200;
 
 
 const GameOfLife: FC = () => {

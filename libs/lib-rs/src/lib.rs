@@ -4,6 +4,7 @@ extern crate js_sys;
 use fixedbitset::FixedBitSet;
 
 mod utils;
+mod aoc_2021;
 
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
