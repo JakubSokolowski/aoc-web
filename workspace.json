@@ -59,25 +59,25 @@
         }
       }
     },
-    "nx-rs-front": {
-      "root": "apps/nx-rs-front",
-      "sourceRoot": "apps/nx-rs-front/src",
+    "aoc-web-front": {
+      "root": "apps/aoc-web-front",
+      "sourceRoot": "apps/aoc-web-front/src",
       "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/nx-rs-front",
-            "index": "apps/nx-rs-front/src/index.html",
-            "main": "apps/nx-rs-front/src/main.tsx",
-            "polyfills": "apps/nx-rs-front/src/polyfills.ts",
-            "tsConfig": "apps/nx-rs-front/tsconfig.app.json",
+            "outputPath": "dist/apps/aoc-web-front",
+            "index": "apps/aoc-web-front/src/index.html",
+            "main": "apps/aoc-web-front/src/main.tsx",
+            "polyfills": "apps/aoc-web-front/src/polyfills.ts",
+            "tsConfig": "apps/aoc-web-front/tsconfig.app.json",
             "assets": [
-              "apps/nx-rs-front/src/favicon.ico",
-              "apps/nx-rs-front/src/assets"
+              "apps/aoc-web-front/src/favicon.ico",
+              "apps/aoc-web-front/src/assets"
             ],
-            "styles": ["apps/nx-rs-front/src/styles.scss"],
+            "styles": ["apps/aoc-web-front/src/styles.scss"],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -91,8 +91,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/nx-rs-front/src/environments/environment.ts",
-                  "with": "apps/nx-rs-front/src/environments/environment.prod.ts"
+                  "replace": "apps/aoc-web-front/src/environments/environment.ts",
+                  "with": "apps/aoc-web-front/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -115,7 +115,7 @@
         "serve": {
           "executor": "@nrwl/web:dev-server",
           "options": {
-            "buildTarget": "nx-rs-front:build",
+            "buildTarget": "aoc-web-front:build",
             "hmr": true
           },
           "dependsOn": [
@@ -126,7 +126,7 @@
           ],
           "configurations": {
             "production": {
-              "buildTarget": "nx-rs-front:build:production",
+              "buildTarget": "aoc-web-front:build:production",
               "hmr": false
             }
           }
@@ -134,30 +134,30 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/nx-rs-front/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": ["apps/aoc-web-front/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/nx-rs-front"],
+          "outputs": ["coverage/apps/aoc-web-front"],
           "options": {
-            "jestConfig": "apps/nx-rs-front/jest.config.js",
+            "jestConfig": "apps/aoc-web-front/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "nx-rs-front-e2e": {
-      "root": "apps/nx-rs-front-e2e",
-      "sourceRoot": "apps/nx-rs-front-e2e/src",
+    "aoc-web-front-e2e": {
+      "root": "apps/aoc-web-front-e2e",
+      "sourceRoot": "apps/aoc-web-front-e2e/src",
       "projectType": "application",
       "targets": {
         "e2e": {
           "executor": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/nx-rs-front-e2e/cypress.json",
-            "tsConfig": "apps/nx-rs-front-e2e/tsconfig.e2e.json",
-            "devServerTarget": "nx-rs-front:serve"
+            "cypressConfig": "apps/aoc-web-front-e2e/cypress.json",
+            "tsConfig": "apps/aoc-web-front-e2e/tsconfig.e2e.json",
+            "devServerTarget": "aoc-web-front:serve"
           },
           "dependsOn": [
             {
@@ -167,14 +167,14 @@
           ],
           "configurations": {
             "production": {
-              "devServerTarget": "nx-rs-front:serve:production"
+              "devServerTarget": "aoc-web-front:serve:production"
             }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/nx-rs-front-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/aoc-web-front-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -201,5 +201,5 @@
       }
     }
   },
-  "defaultProject": "nx-rs-front"
+  "defaultProject": "aoc-web-front"
 }
