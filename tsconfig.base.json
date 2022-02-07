@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-rs/lib-rs": ["libs/lib-rs/index.ts"]
+      "@aoc-web/lib-rs": ["libs/lib-rs/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

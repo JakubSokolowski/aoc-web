@@ -1,5 +1,5 @@
 {
-  "npmScope": "nx-rs",
+  "npmScope": "aoc-web",
   "affected": {
     "defaultBase": "master"
   },
@@ -22,12 +22,12 @@
     "lib-rs": {
       "tags": []
     },
-    "nx-rs-front": {
+    "aoc-web-front": {
       "tags": []
     },
-    "nx-rs-front-e2e": {
+    "aoc-web-front-e2e": {
       "tags": [],
-      "implicitDependencies": ["nx-rs-front"]
+      "implicitDependencies": ["aoc-web-front"]
     }
   }
 }

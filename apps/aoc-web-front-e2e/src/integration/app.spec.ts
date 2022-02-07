@@ -1,4 +1,4 @@
-describe('nx-rs-front', () => {
+describe('aoc-web-front', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display container with game of life', () => {

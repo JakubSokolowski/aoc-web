@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { environment } from '../environments/environment';
-import { run_part_1, run_part_2 } from '@nx-rs/lib-rs';
+import { run_part_1, run_part_2 } from '@aoc-web/lib-rs';
 
 function fetchProblemData(year: number, day: number): Promise<Response> {
   const prefix = environment.deployUrl

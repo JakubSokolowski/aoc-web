@@ -1,5 +1,5 @@
 import { FC, MouseEventHandler, useEffect, useRef, useState, MouseEvent } from 'react';
-import { Cell, memory, Universe } from '@nx-rs/lib-rs';
+import { Cell, memory, Universe } from '@aoc-web/lib-rs';
 
 const CELL_SIZE_PX = 5;
 
@@ -203,7 +203,7 @@ const GameOfLife: FC = () => {
           Shift + click to insert <a href={"https://conwaylife.com/wiki/Pulsar"}>Pulsar</a>
         </div>
         <div style={{flexGrow: 1}}/>
-        <a href={"https://github.com/JakubSokolowski/nx-rs"}>
+        <a href={"https://github.com/JakubSokolowski/aoc-web"}>
           source code
         </a>
       </div>

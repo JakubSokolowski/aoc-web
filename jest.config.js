@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['<rootDir>/apps/nx-rs-front', '<rootDir>/libs/lib-rs'],
+  projects: ['<rootDir>/apps/aoc-web-front', '<rootDir>/libs/lib-rs'],
 };

@@ -74,4 +74,4 @@ jobs:
         with:
           name: test-results
           path: |
-            dist/cypress/apps/nx-rs-front-e2e/
+            dist/cypress/apps/aoc-web-front-e2e/
