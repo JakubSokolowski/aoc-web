@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { environment } from '../environments/environment';
-import { run_part_1, run_part_2 } from '@aoc-web/lib-rs';
+import { Part, run } from '@aoc-web/lib-rs';
 
 function fetchProblemData(year: number, day: number): Promise<Response> {
   const prefix = environment.deployUrl
@@ -20,7 +20,10 @@ async function checkForError(response: Response): Promise<string> {
   }
 }
 
-export const useProblemData = (year: number, day: number): [string | null, boolean] => {
+export const useProblemData = (
+  year: number,
+  day: number
+): [string | null, boolean] => {
   const [problem, setProblem] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -38,34 +41,29 @@ export const useProblemData = (year: number, day: number): [string | null, boole
   }, [year, day]);
 
   return [problem, loading];
-}
+};
 
-const AocProblem = () => {
-  const [problem, loading] = useProblemData(2021, 1);
+const AocProblem: FC<{ year: number; day: number }> = ({ year, day }) => {
+  const [problem, loading] = useProblemData(year, day);
   const [part1, setPart1] = useState<string | null>(null);
   const [part2, setPart2] = useState<string | null>(null);
 
   useEffect(() => {
-    if(problem) {
-      setPart1(run_part_1(problem));
-      setPart2(run_part_2(problem));
+    if (problem) {
+      setPart1(run(year, day, Part.First, problem));
+      setPart2(run(year, day, Part.Second, problem));
     }
   }, [problem]);
 
   return (
     <div>
-      <div data-test={"problem"}>
+      <div data-test={'problem'}>
         Year {2021} day {1} solution:
       </div>
-      <div>
-        Part 1 : {part1}
-      </div>
-      <div>
-        Part 2 : {part2}
-      </div>
+      <div>Part 1 : {part1}</div>
+      <div>Part 2 : {part2}</div>
     </div>
-  )
-}
-
+  );
+};
 
 export default AocProblem;
