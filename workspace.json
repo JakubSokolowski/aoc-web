@@ -1,64 +1,6 @@
 {
   "version": 2,
   "projects": {
-    "lib-rs": {
-      "root": "libs/lib-rs",
-      "sourceRoot": "libs/lib-rs/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              {
-                "command": "cargo clippy -- -D warnings"
-              }
-            ],
-            "cwd": "libs/lib-rs"
-          }
-        },
-        "format": {
-          "executor": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              {
-                "command": "cargo fmt"
-              }
-            ],
-            "cwd": "libs/lib-rs"
-          }
-        },
-        "test": {
-          "executor": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              {
-                "command": "cargo build"
-              },
-              {
-                "command": "cargo test"
-              },
-              {
-                "command": "wasm-pack test --headless --firefox"
-              }
-            ],
-            "cwd": "libs/lib-rs",
-            "parallel": false
-          }
-        },
-        "build": {
-          "executor": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              {
-                "command": "wasm-pack build"
-              }
-            ],
-            "cwd": "libs/lib-rs"
-          }
-        }
-      }
-    },
     "aoc-web-front": {
       "root": "apps/aoc-web-front",
       "sourceRoot": "apps/aoc-web-front/src",
@@ -175,6 +117,64 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/aoc-web-front-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "lib-rs": {
+      "root": "libs/lib-rs",
+      "sourceRoot": "libs/lib-rs/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cargo clippy -- -D warnings"
+              }
+            ],
+            "cwd": "libs/lib-rs"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cargo fmt"
+              }
+            ],
+            "cwd": "libs/lib-rs"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cargo build"
+              },
+              {
+                "command": "cargo test"
+              },
+              {
+                "command": "wasm-pack test --headless --firefox"
+              }
+            ],
+            "cwd": "libs/lib-rs",
+            "parallel": false
+          }
+        },
+        "build": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "wasm-pack build"
+              }
+            ],
+            "cwd": "libs/lib-rs"
           }
         }
       }

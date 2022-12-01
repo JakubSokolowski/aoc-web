@@ -13,6 +13,8 @@
     "e2e-watch": "nx run aoc-web-front-e2e:e2e --watch",
     "build-wasm": "nx run lib-rs:build",
     "test-wasm": "nx run lib-rs:test",
+    "format-wasm": "nx run lib-rs:format",
+    "lint-wasm": "nx run lib-rs:lint",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
