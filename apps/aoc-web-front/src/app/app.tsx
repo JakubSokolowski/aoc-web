@@ -1,58 +1,69 @@
-import styles from './app.module.scss';
 import React, { FC, lazy, Suspense } from 'react';
+import { ProblemInfo, SolvedYearProblems } from './models';
+import '../styles.scss';
+import styles from './app.module.scss';
 
 const AocProblem = lazy(() => import('../components/problem'));
-
-interface SolvedYearProblems {
-    year: number;
-    days: number[];
-}
-
-interface ProblemInfo {
-    year: number;
-    day: number;
-}
 
 const solvedProblems: SolvedYearProblems[] = [
     {
         year: 2021,
-        days: [1]
+        days: [
+            {
+                value: 1,
+                firstMessage: 'Num measurements larger then previous:',
+                secondMessage:
+                    'Num measurements larger then previous in 3-wide sliding window:',
+            },
+        ],
     },
     {
         year: 2022,
-        days: [1]
-    }
+        days: [
+            {
+                value: 1,
+                firstMessage: 'Total calories top Elf is carrying:',
+                secondMessage: 'Total calories top 3 Elves are carrying:',
+            },
+            {
+                value: 2,
+                firstMessage: 'Total score for strategy:',
+                secondMessage: 'Total score for strategy:',
+            },
+        ],
+    },
 ];
 
 const YearMenu: FC<{
+    selectedProblem: ProblemInfo;
     data: SolvedYearProblems;
     onProblemClick: (info: ProblemInfo) => void;
-}> = ({ data, onProblemClick }) => {
+}> = ({ data, onProblemClick, selectedProblem }) => {
     const { year, days } = data;
 
     return (
         <div>
-            <div style={{ fontWeight: 'bold', fontSize: '30px' }}>{year}</div>
+            <div className="accent">{year}</div>
             <div
                 style={{
                     display: 'flex',
                     flexDirection: 'row',
-                    flexWrap: 'wrap'
+                    flexWrap: 'wrap',
                 }}
             >
                 {days.map((d) => {
+                    const selected =
+                        year === selectedProblem.year &&
+                        d.value === selectedProblem.day.value;
                     return (
-                        <div
-                            key={d}
-                            style={{
-                                paddingRight: '10px',
-                                paddingBottom: '10px'
-                            }}
-                        >
+                        <div key={d.value}>
                             <button
+                                className={`problem-button ${
+                                    selected && 'problem-selected'
+                                }`}
                                 onClick={() => onProblemClick({ year, day: d })}
                             >
-                                {d}
+                                [{d.value}]
                             </button>
                         </div>
                     );
@@ -65,29 +76,35 @@ const YearMenu: FC<{
 export function App() {
     const [info, setInfo] = React.useState<ProblemInfo>({
         year: solvedProblems[0].year,
-        day: solvedProblems[0].days[0]
+        day: solvedProblems[0].days[0],
     });
 
     return (
         <div className={styles.app}>
-            <div>
-                {solvedProblems.map((p) => {
-                    return (
-                        <YearMenu
-                            key={p.year}
-                            data={p}
-                            onProblemClick={(problemInfo) => {
-                                setInfo(problemInfo);
-                            }}
-                        />
-                    );
-                })}
+            <div style={{ marginLeft: '40px', marginRight: '40px' }}>
+                <span data-test="description" className="description">
+                    Rust AOC solutions, run in browser with WASM:
+                </span>
+                <div className="problem-menu">
+                    {solvedProblems.map((p) => {
+                        return (
+                            <YearMenu
+                                selectedProblem={info}
+                                key={p.year}
+                                data={p}
+                                onProblemClick={(problemInfo) => {
+                                    setInfo(problemInfo);
+                                }}
+                            />
+                        );
+                    })}
+                </div>
+                <main>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <AocProblem info={info} />
+                    </Suspense>
+                </main>
             </div>
-            <main>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <AocProblem {...info} />
-                </Suspense>
-            </main>
         </div>
     );
 }

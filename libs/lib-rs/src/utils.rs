@@ -1,10 +1,8 @@
 extern crate web_sys;
 
-macro_rules! log {
-    ( $( $t:tt )* ) => {
-        web_sys::console::log_1(&format!( $( $t )* ).into());
-    }
-}
+use crate::log;
+use std::fs::File;
+use std::io::Read;
 
 #[allow(dead_code)]
 pub fn set_panic_hook() {
@@ -19,12 +17,24 @@ pub fn set_panic_hook() {
     log!("Panic hook set");
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub fn get_path(year: u32, day: u8, bigboy: bool) -> String {
+    use std::path::PathBuf;
+    let mut d = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    d.push("data/");
 
-    #[test]
-    fn test_something_in_some_other_file() {
-        assert_eq!(1, 1);
+    if bigboy {
+        format!("{}/{}/.bigboy/{}.txt", d.to_str().unwrap(), year, day)
+    } else {
+        format!("{}/{}/{}.txt", d.to_str().unwrap(), year, day)
     }
+}
+
+#[allow(unused)]
+pub fn read_to_string(year: u32, day: u8, bigboy: bool) -> String {
+    let data_path = get_path(year, day, bigboy);
+    let mut fp =
+        File::open(&data_path).unwrap_or_else(|_| panic!("Cannot open file at {}", data_path));
+    let mut buf = String::new();
+    fp.read_to_string(&mut buf).unwrap();
+    buf
 }

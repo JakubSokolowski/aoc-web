@@ -1,12 +1,24 @@
 import { FC, useEffect, useState } from 'react';
 import { environment } from '../environments/environment';
 import { Part, run } from '@aoc-web/lib-rs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { tomorrowNight as codeStyle } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import '../styles.scss';
+import { ProblemInfo } from '../app/models';
 
 function fetchProblemData(year: number, day: number): Promise<Response> {
     const prefix = environment.deployUrl
         ? `/${environment.deployUrl}/assets/problems`
         : '/assets/problems';
     const url = `${prefix}/${year}/${day}.txt`;
+    return fetch(url);
+}
+
+function fetchSolutionCode(year: number, day: number): Promise<Response> {
+    const prefix = environment.deployUrl
+        ? `/${environment.deployUrl}/assets/source`
+        : '/assets/source';
+    const url = `${prefix}/aoc_${year}/day${('0' + day).slice(-2)}.rs`;
     return fetch(url);
 }
 
@@ -29,6 +41,7 @@ export const useProblemData = (
 
     useEffect(() => {
         setLoading(true);
+        console.log('Fetching data for', year, day);
         fetchProblemData(year, day)
             .then(checkForError)
             .then((data) => {
@@ -43,25 +56,132 @@ export const useProblemData = (
     return [problem, loading];
 };
 
-const AocProblem: FC<{ year: number; day: number }> = ({ year, day }) => {
-    const [problem, loading] = useProblemData(year, day);
-    const [part1, setPart1] = useState<string | null>(null);
-    const [part2, setPart2] = useState<string | null>(null);
+const AocProblem: FC<{ info: ProblemInfo }> = ({ info }) => {
+    const { year, day } = info;
+    const [problem, loading] = useProblemData(year, day.value);
+    const [code, setCode] = useState<string>();
+    const [showCode, setShowCode] = useState(false);
 
     useEffect(() => {
-        if (problem) {
-            setPart1(run(year, day, Part.First, problem));
-            setPart2(run(year, day, Part.Second, problem));
-        }
-    }, [problem]);
+        setShowCode(false);
+        setCode(undefined);
+    }, [year, day]);
 
     return (
-        <div>
-            <div data-test={'problem'}>
-                Year {2021} day {1} solution:
+        <div className="problems-section">
+            <div className="problem-header">
+                <span>
+                    Year {year} day {day.value}
+                </span>
+                <a
+                    target="_blank"
+                    className="desc-link"
+                    href={`https://adventofcode.com/${info.year}/day/${info.day.value}`}
+                    rel="noreferrer"
+                >
+                    [Description]
+                </a>
+                <button
+                    className="accent-button"
+                    onClick={() => {
+                        setShowCode(!showCode);
+                        if (!code) {
+                            fetchSolutionCode(year, day.value)
+                                .then(checkForError)
+                                .then((data) => {
+                                    // Yeet out the test code if any
+                                    setCode(
+                                        data.split('#[cfg(test)]')[0].trimEnd()
+                                    );
+                                })
+                                .catch(async () => {
+                                    console.error(
+                                        `Failed to load solution data: ${year} ${day}`
+                                    );
+                                });
+                        }
+                    }}
+                >
+                    [Solution]
+                </button>
+                :
             </div>
-            <div>Part 1 : {part1}</div>
-            <div>Part 2 : {part2}</div>
+            <ProblemPart
+                problem={problem}
+                info={info}
+                part={Part.First}
+                loading={loading}
+            />
+            <ProblemPart
+                problem={problem}
+                info={info}
+                part={Part.Second}
+                loading={loading}
+            />
+            {!!code && showCode && (
+                <SyntaxHighlighter
+                    customStyle={{ fontSize: '12px' }}
+                    showLineNumbers={true}
+                    language="rust"
+                    style={codeStyle}
+                >
+                    {code}
+                </SyntaxHighlighter>
+            )}
+        </div>
+    );
+};
+
+export const ProblemPart: FC<{
+    problem: string | null;
+    info: ProblemInfo;
+    part: Part;
+    loading?: boolean;
+}> = ({ problem, loading, part, info }) => {
+    const { year, day } = info;
+    const [time, setTime] = useState<number>();
+    const [solving, setSolving] = useState(false);
+    const [result, setResult] = useState<string>();
+
+    useEffect(() => {
+        setResult(undefined);
+        setTime(undefined);
+    }, [year, day]);
+    return (
+        <div className="problem-part">
+            <div className="problem-actions">
+                <span className="part-title">
+                    [Part {part === Part.First ? '1' : '2'}]
+                </span>
+                <button
+                    className="accent-button"
+                    disabled={!problem || loading}
+                    onClick={() => {
+                        if (problem) {
+                            const start = performance.now();
+                            setResult(undefined);
+                            setSolving(true);
+                            setResult(run(year, day.value, part, problem));
+                            setSolving(false);
+                            const end = performance.now();
+                            setTime(end - start);
+                        }
+                    }}
+                >
+                    [Solve]
+                </button>
+            </div>
+            {!!result && !solving && (
+                <div>
+                    <span>{`${
+                        part === Part.First
+                            ? day.firstMessage || ''
+                            : day.secondMessage || ''
+                    }`}</span>
+                    <span className="solution">{` ${result}`}</span>
+                    <span>{`, took ${time?.toFixed(1)}ms`}</span>
+                </div>
+            )}
         </div>
     );
 };

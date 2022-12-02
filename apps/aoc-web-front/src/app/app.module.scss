@@ -1,10 +1,15 @@
 .app {
-  font-family: sans-serif;
+    font-family: 'Source Code Pro', monospace;
 }
-
+button {
+    font-family: 'Source Code Pro', monospace;
+}
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background: #0f0f23;
+    color: #cccccc;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14pt;
+    min-width: 60em;
 }

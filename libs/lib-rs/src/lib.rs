@@ -7,6 +7,13 @@ mod aoc_2021;
 mod aoc_2022;
 mod utils;
 
+#[macro_export]
+macro_rules! log {
+    ( $( $t:tt )* ) => {
+        web_sys::console::log_1(&format!( $( $t )* ).into());
+    }
+}
+
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
@@ -38,6 +45,8 @@ pub fn run(year: usize, day: usize, part: Part, input: &str) -> String {
         // 2022
         (2022, 1, Part::First) => aoc_2022::day01::run_first(input),
         (2022, 1, Part::Second) => aoc_2022::day01::run_second(input),
+        (2022, 2, Part::First) => aoc_2022::day02::run_first(input),
+        (2022, 2, Part::Second) => aoc_2022::day02::run_second(input),
         (_, _, _) => panic!("Not Implemented"),
     }
 }
