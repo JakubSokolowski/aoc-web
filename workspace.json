@@ -17,7 +17,16 @@
                         "tsConfig": "apps/aoc-web-front/tsconfig.app.json",
                         "assets": [
                             "apps/aoc-web-front/src/favicon.ico",
-                            "apps/aoc-web-front/src/assets"
+                            {
+                                "input": "libs/lib-rs/data",
+                                "glob": "**/*",
+                                "output": "assets/problems/"
+                            },
+                            {
+                                "input": "libs/lib-rs/src",
+                                "glob": "**/*rs",
+                                "output": "assets/source/"
+                            }
                         ],
                         "styles": ["apps/aoc-web-front/src/styles.scss"],
                         "scripts": [],

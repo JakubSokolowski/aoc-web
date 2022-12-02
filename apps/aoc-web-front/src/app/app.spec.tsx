@@ -8,18 +8,20 @@ import App from './app';
 // but mocking whole component works also. GameOfLife import is lazy so the factory
 // needs to return a function or class, instead of usual component:
 // { GameOfLife: () => Game of Life was here' } <- will not work
-jest.mock('../components/problem', () => (() => 'Problem?'));
+jest.mock('../components/problem', () => () => 'Problem?');
 
 describe('App', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<App />);
+    it('should render successfully', () => {
+        const { baseElement } = render(<App />);
 
-    expect(baseElement).toBeTruthy();
-  });
+        expect(baseElement).toBeTruthy();
+    });
 
-  it('should display game of life', () => {
-    const { getByText } = render(<App />);
+    it('should display app', () => {
+        const { getByText } = render(<App />);
 
-    expect(getByText('Problem?')).toBeTruthy();
-  });
+        expect(
+            getByText('Rust AOC solutions, run in browser with WASM:')
+        ).toBeTruthy();
+    });
 });

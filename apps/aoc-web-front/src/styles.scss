@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+
+.accent {
+    display: inline-block;
+    text-decoration: none;
+    color: #00cc00;
+    text-shadow: 0 0 2px #00cc00, 0 0 5px #00cc00;
+}
+
+.desc-link {
+    color: #009900;
+    padding-left: 0.5em;
+    text-decoration: none;
+}
+
+.solution {
+    color: #ffff66;
+    font-style: normal;
+    text-shadow: 0 0 5px #ffff66;
+}
+
+.problem-menu {
+    margin: 1em 0;
+}
+
+.problem-actions {
+    display: flex;
+    flex-direction: row;
+}
+
+.problem-part {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+}
+
+.problems-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+}
+
+.problem-header {
+    margin-bottom: 0.5em;
+}
+
+.part-title {
+    font-size: 16px;
+}
+
+.accent-button {
+    padding: 0;
+    border: none;
+    background: none;
+    color: #009900;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    align-self: flex-start;
+}
+
+.problem-button {
+    border: none;
+    background: none;
+    color: #333333;
+    font-size: 14pt;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.problem-selected {
+    color: #cccccc;
+}
+
+.problem-button:hover {
+    color: #cccccc;
+}
+
+.problem-button:active {
+    color: #cccccc;
+}
+
+.accent-button:hover {
+    color: #99ff99;
+}

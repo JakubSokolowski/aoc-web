@@ -2,6 +2,6 @@ describe('aoc-web-front', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display container with game of life', () => {
-    cy.getByDataTest('problem').contains("Year 2021 day 1 solution:");
+    cy.getByDataTest('description').contains("Rust AOC solutions, run in browser with WASM:");
   });
 });
