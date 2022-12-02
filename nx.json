@@ -1,33 +1,33 @@
 {
-  "npmScope": "aoc-web",
-  "affected": {
-    "defaultBase": "master"
-  },
-  "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
+    "npmScope": "aoc-web",
+    "affected": {
+        "defaultBase": "master"
     },
-    ".eslintrc.json": "*"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["lint", "test", "e2e"]
-      }
+    "implicitDependencies": {
+        "package.json": {
+            "dependencies": "*",
+            "devDependencies": "*"
+        },
+        ".eslintrc.json": "*"
+    },
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "@nrwl/workspace/tasks-runners/default",
+            "options": {
+                "cacheableOperations": ["lint", "test", "e2e"]
+            }
+        }
+    },
+    "projects": {
+        "aoc-web-front": {
+            "tags": []
+        },
+        "aoc-web-front-e2e": {
+            "tags": [],
+            "implicitDependencies": ["aoc-web-front"]
+        },
+        "lib-rs": {
+            "tags": []
+        }
     }
-  },
-  "projects": {
-    "aoc-web-front": {
-      "tags": []
-    },
-    "aoc-web-front-e2e": {
-      "tags": [],
-      "implicitDependencies": ["aoc-web-front"]
-    },
-    "lib-rs": {
-      "tags": []
-    }
-  }
 }
