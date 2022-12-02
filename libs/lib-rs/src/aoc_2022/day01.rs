@@ -1,5 +1,4 @@
 use itertools::Itertools;
-
 pub fn run_first(input: &str) -> String {
     let as_lines: Vec<String> = input.split('\n').map(|s| s.to_string()).collect();
 
