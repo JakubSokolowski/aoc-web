@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 
 import App from './app';
+import { BrowserRouter } from 'react-router-dom';
 
 // Workaround for "Jest encountered an unexpected token" when testing
 // component that has some child that imports some wasm module
@@ -12,16 +13,10 @@ jest.mock('../components/problem', () => () => 'Problem?');
 
 describe('App', () => {
     it('should render successfully', () => {
-        const { baseElement } = render(<App />);
+        const { baseElement } = render(<BrowserRouter>
+            <App />
+        </BrowserRouter>);
 
         expect(baseElement).toBeTruthy();
-    });
-
-    it('should display app', () => {
-        const { getByText } = render(<App />);
-
-        expect(
-            getByText('Rust AOC solutions, run in browser with WASM:')
-        ).toBeTruthy();
     });
 });
