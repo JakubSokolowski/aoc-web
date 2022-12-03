@@ -20,6 +20,12 @@ const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Total area:',
                 secondMessage:
                     'Total aim area:'
+            },
+            {
+                value: 3,
+                firstMessage: 'Power consumption:',
+                secondMessage:
+                    'Life support rating:'
             }
         ]
     },
