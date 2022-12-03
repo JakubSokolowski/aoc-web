@@ -30,6 +30,11 @@ const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Total score for strategy:',
                 secondMessage: 'Total score for strategy:',
             },
+            {
+                value: 3,
+                firstMessage: 'Sum of priorities:',
+                secondMessage: 'Sum of priorities:',
+            },
         ],
     },
 ];
@@ -81,7 +86,7 @@ export function App() {
 
     return (
         <div className={styles.app}>
-            <div style={{ marginLeft: '40px', marginRight: '40px' }}>
+            <div>
                 <span data-test="description" className="description">
                     Rust AOC solutions, run in browser with WASM:
                 </span>

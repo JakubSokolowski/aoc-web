@@ -120,7 +120,11 @@ const AocProblem: FC<{ info: ProblemInfo }> = ({ info }) => {
             />
             {!!code && showCode && (
                 <SyntaxHighlighter
-                    customStyle={{ fontSize: '12px' }}
+                    customStyle={{
+                        fontSize: '12px',
+                        background: 'none',
+                        padding: 0,
+                    }}
                     showLineNumbers={true}
                     language="rust"
                     style={codeStyle}
