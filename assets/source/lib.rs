@@ -46,6 +46,8 @@ pub fn run(year: usize, day: usize, part: Part, input: &str) -> String {
         (2021, 2, Part::Second) => aoc_2021::day02::run_second(input),
         (2021, 3, Part::First) => aoc_2021::day03::run_first(input),
         (2021, 3, Part::Second) => aoc_2021::day03::run_second(input),
+        (2021, 4, Part::First) => aoc_2021::day04::run_first(input),
+        (2021, 4, Part::Second) => aoc_2021::day04::run_second(input),
 
         // 2022
         (2022, 1, Part::First) => aoc_2022::day01::run_first(input),

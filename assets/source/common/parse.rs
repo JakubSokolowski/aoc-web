@@ -1,3 +1,6 @@
+use lazy_static::lazy_static;
+use regex::Regex;
+
 #[cfg(test)]
 pub mod test_utils {
     #[macro_export]
@@ -6,4 +9,13 @@ pub mod test_utils {
 }
     #[allow(clippy::all)]
     pub(crate) use vec_of_strings;
+}
+
+pub fn parse_numbers(input: &str) -> Vec<i64> {
+    lazy_static! {
+        static ref RE: Regex = Regex::new(r"\d+").unwrap();
+    }
+    RE.find_iter(input)
+        .filter_map(|digits| digits.as_str().parse().ok())
+        .collect()
 }
