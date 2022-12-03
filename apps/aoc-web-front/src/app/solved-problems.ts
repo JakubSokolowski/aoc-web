@@ -20,6 +20,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Power consumption:',
                 secondMessage: 'Life support rating:',
             },
+            {
+                value: 4,
+                firstMessage: 'First winner score:',
+                secondMessage: 'Last winner score:',
+            },
         ],
     },
     {
