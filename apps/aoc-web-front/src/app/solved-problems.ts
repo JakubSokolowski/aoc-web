@@ -25,6 +25,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'First winner score:',
                 secondMessage: 'Last winner score:',
             },
+            {
+                value: 5,
+                firstMessage: 'Number of overlapping points:',
+                secondMessage: 'Number of overlapping points with diagonal:',
+            },
         ],
     },
     {
