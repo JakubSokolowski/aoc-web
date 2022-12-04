@@ -59,6 +59,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 value: 11,
                 firstMessage: 'Flash count:',
                 secondMessage: 'First simultaneous flash at step:'
+            },
+            {
+                value: 12,
+                firstMessage: 'Paths count:',
+                secondMessage: 'Paths count:'
             }
         ]
     },
