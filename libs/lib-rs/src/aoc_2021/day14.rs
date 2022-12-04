@@ -8,20 +8,20 @@ pub fn run_second(input: &str) -> String {
     min_max_diff(input, 40).to_string()
 }
 
-fn char_windows(src: &str, win_size: usize) -> impl Iterator<Item = &str> {
+fn char_windows(src: &str, win_size: i64) -> impl Iterator<Item = &str> {
     src.char_indices().flat_map(move |(from, _)| {
         src[from..]
             .char_indices()
-            .nth(win_size - 1)
+            .nth(win_size as usize - 1)
             .map(|(to, c)| &src[from..from + to + c.len_utf8()])
     })
 }
 
-pub fn min_max_diff(input: &str, steps: usize) -> usize {
+pub fn min_max_diff(input: &str, steps: i64) -> i64 {
     let (polymer, insertions) = parse_input(input);
 
-    let mut pairs_count: BTreeMap<String, usize> = BTreeMap::new();
-    let mut element_count: BTreeMap<char, usize> = BTreeMap::new();
+    let mut pairs_count: BTreeMap<String, i64> = BTreeMap::new();
+    let mut element_count: BTreeMap<char, i64> = BTreeMap::new();
 
     for c in polymer.chars() {
         *element_count.entry(c).or_insert(0) += 1
@@ -32,8 +32,8 @@ pub fn min_max_diff(input: &str, steps: usize) -> usize {
     }
 
     for _ in 0..steps {
-        let mut to_add: Vec<(String, usize)> = vec![];
-        let mut to_remove: Vec<(String, usize)> = vec![];
+        let mut to_add: Vec<(String, i64)> = vec![];
+        let mut to_remove: Vec<(String, i64)> = vec![];
 
         for (pair, insert) in &insertions {
             let pair_str = pair.to_string();
