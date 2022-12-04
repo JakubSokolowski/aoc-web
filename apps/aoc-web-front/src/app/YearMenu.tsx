@@ -10,12 +10,12 @@ export const YearMenu: FC<{
 
     return (
         <div>
-            <div className="accent">{year}</div>
+            <div className='accent'>{year}</div>
             <div
                 style={{
                     display: 'flex',
                     flexDirection: 'row',
-                    flexWrap: 'wrap',
+                    flexWrap: 'wrap'
                 }}
             >
                 {days.map((d) => {
@@ -25,6 +25,7 @@ export const YearMenu: FC<{
                     return (
                         <div key={d.value}>
                             <button
+                                data-test={`problem-${year}-${d.value}`}
                                 className={`problem-button ${
                                     selected && 'problem-selected'
                                 }`}

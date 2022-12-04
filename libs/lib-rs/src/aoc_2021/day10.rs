@@ -12,7 +12,7 @@ pub fn run_second(input: &str) -> String {
     line_completion_score(&lines).to_string()
 }
 
-pub fn line_completion_score(input: &[String]) -> usize {
+pub fn line_completion_score(input: &[String]) -> i64 {
     let scores: Vec<_> = only_incomplete_lines(input)
         .iter()
         .map(|l| score_line_completion(l))
@@ -23,7 +23,7 @@ pub fn line_completion_score(input: &[String]) -> usize {
     *scores.get(middle_index).unwrap()
 }
 
-pub fn syntax_error_score(input: &[String]) -> usize {
+pub fn syntax_error_score(input: &[String]) -> i64 {
     input
         .iter()
         .filter_map(|l| first_broken_char(l))
@@ -38,7 +38,7 @@ pub fn only_incomplete_lines(input: &[String]) -> Vec<&String> {
         .collect()
 }
 
-pub fn score_line_completion(line: &str) -> usize {
+pub fn score_line_completion(line: &str) -> i64 {
     let to_complete: Vec<_> = reduce_line(line)
         .iter()
         .rev()
@@ -71,7 +71,7 @@ fn get_closing(ch: char) -> char {
     }
 }
 
-pub fn score_char(ch: char) -> usize {
+pub fn score_char(ch: char) -> i64 {
     match ch {
         ')' => 3,
         ']' => 57,

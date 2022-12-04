@@ -1,5 +1,7 @@
 export interface DayInfo {
     value: number;
+    first?: string;
+    second?: string;
     firstMessage?: ResultMessage;
     secondMessage?: ResultMessage;
 }

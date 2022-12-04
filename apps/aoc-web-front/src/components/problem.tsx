@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FC, useEffect, useState } from 'react';
 import { environment } from '../environments/environment';
 import { Part, run } from '@aoc-web/lib-rs';
@@ -189,6 +190,7 @@ export const ProblemPart: FC<{
                     [Part {part === Part.First ? '1' : '2'}]
                 </span>
                 <button
+                    data-test={`solve-${part === Part.First ? 'first' : 'second'}`}
                     className="accent-button"
                     disabled={!problem || loading || solving}
                     onClick={() => {
@@ -203,6 +205,7 @@ export const ProblemPart: FC<{
             </div>
             {!!result && !solving && (
                 <Result
+                    part={part}
                     message={
                         part === Part.First
                             ? day.firstMessage || ''
@@ -220,16 +223,24 @@ function isComplex(msg: ResultMessage): msg is ComplexMessage {
     return !!(msg as ComplexMessage).display;
 }
 
-const Result: FC<{ message: ResultMessage; result: string; time?: number }> = ({
-    message,
-    time,
-    result,
-}) => {
+const Result: FC<{
+    message: ResultMessage;
+    result: string;
+    time?: number;
+    part: Part;
+}> = ({ message, time, result, part }) => {
     if (isComplex(message)) {
         return (
             <div>
                 <div>{`${message.text}`}</div>
-                <pre className="solution-pre">{result}</pre>
+                <pre
+                    data-test={`solution-${
+                        part === Part.First ? 'first' : 'second'
+                    }`}
+                    className="solution-pre"
+                >
+                    {result}
+                </pre>
                 <div>{`took ${time?.toFixed(1)} ms`}</div>
             </div>
         );
@@ -237,7 +248,12 @@ const Result: FC<{ message: ResultMessage; result: string; time?: number }> = ({
         return (
             <div>
                 <span>{`${message}`}</span>
-                <span className="solution">{` ${result}`}</span>
+                <span
+                    data-test={`solution-${
+                        part === Part.First ? 'first' : 'second'
+                    }`}
+                    className="solution"
+                >{` ${result}`}</span>
                 <span>{`, took ${time?.toFixed(1)} ms`}</span>
             </div>
         );
