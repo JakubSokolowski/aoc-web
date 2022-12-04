@@ -35,6 +35,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Population size after 80 days:',
                 secondMessage: 'Population size after 256 days:',
             },
+            {
+                value: 7,
+                firstMessage: 'Total fuel spend:',
+                secondMessage: 'Total fuel spend:',
+            },
         ],
     },
     {
