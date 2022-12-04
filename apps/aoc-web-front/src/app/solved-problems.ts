@@ -30,6 +30,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Number of overlapping points:',
                 secondMessage: 'Number of overlapping points with diagonal:',
             },
+            {
+                value: 6,
+                firstMessage: 'Population size after 80 days:',
+                secondMessage: 'Population size after 256 days:',
+            },
         ],
     },
     {
