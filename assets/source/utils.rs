@@ -36,5 +36,5 @@ pub fn read_to_string(year: u32, day: u8, bigboy: bool) -> String {
         File::open(&data_path).unwrap_or_else(|_| panic!("Cannot open file at {}", data_path));
     let mut buf = String::new();
     fp.read_to_string(&mut buf).unwrap();
-    buf
+    buf.trim().to_string()
 }
