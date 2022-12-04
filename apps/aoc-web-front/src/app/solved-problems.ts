@@ -73,6 +73,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                     text: 'Code: \n',
                 },
             },
+            {
+                value: 14,
+                firstMessage: 'Difference after 10 steps:',
+                secondMessage: 'Difference after 40 steps:',
+            },
         ],
     },
     {
