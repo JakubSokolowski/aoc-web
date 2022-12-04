@@ -164,9 +164,25 @@ export const ProblemPart: FC<{
     };
 
     useEffect(() => {
+        if(solving && problem) {
+            const start = performance.now();
+            runPromise(year, day.value, part, problem)
+                .then((result) => {
+                    setResult(result);
+                    setSolving(false);
+                    const end = performance.now();
+                    setTime(end - start);
+                })
+                .catch(console.error);
+        }
+    }, [solving]);
+
+
+    useEffect(() => {
         setResult(undefined);
         setTime(undefined);
     }, [year, day]);
+
     return (
         <div className='problem-part'>
             <div className='problem-actions'>
@@ -175,20 +191,11 @@ export const ProblemPart: FC<{
                 </span>
                 <button
                     className='accent-button'
-                    disabled={!problem || loading}
+                    disabled={!problem || loading || solving}
                     onClick={() => {
                         if (problem) {
-                            const start = performance.now();
                             setResult(undefined);
                             setSolving(true);
-                            runPromise(year, day.value, part, problem)
-                                .then((result) => {
-                                    setResult(result);
-                                    setSolving(false);
-                                    const end = performance.now();
-                                    setTime(end - start);
-                                })
-                                .catch(console.error);
                         }
                     }}
                 >
@@ -203,7 +210,7 @@ export const ProblemPart: FC<{
                             : day.secondMessage || ''
                     }`}</span>
                     <span className='solution'>{` ${result}`}</span>
-                    <span>{`, took ${time?.toFixed(1)}ms`}</span>
+                    <span>{`, took ${time?.toFixed(1)} ms`}</span>
                 </div>
             )}
         </div>
