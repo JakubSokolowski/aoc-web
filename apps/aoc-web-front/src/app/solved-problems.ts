@@ -40,6 +40,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Total fuel spend:',
                 secondMessage: 'Total fuel spend:',
             },
+            {
+                value: 8,
+                firstMessage: 'Num times 1,4,7,8 appear:',
+                secondMessage: 'Output sum:',
+            },
         ],
     },
     {
