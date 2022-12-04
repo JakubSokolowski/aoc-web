@@ -56,6 +56,10 @@ pub fn run(year: usize, day: usize, part: Part, input: &str) -> String {
         (2021, 7, Part::Second) => aoc_2021::day07::run_second(input),
         (2021, 8, Part::First) => aoc_2021::day08::run_first(input),
         (2021, 8, Part::Second) => aoc_2021::day08::run_second(input),
+        (2021, 9, Part::First) => aoc_2021::day09::run_first(input),
+        (2021, 9, Part::Second) => aoc_2021::day09::run_second(input),
+        (2021, 10, Part::First) => aoc_2021::day10::run_first(input),
+        (2021, 10, Part::Second) => aoc_2021::day10::run_second(input),
 
         // 2022
         (2022, 1, Part::First) => aoc_2022::day01::run_first(input),
@@ -66,6 +70,6 @@ pub fn run(year: usize, day: usize, part: Part, input: &str) -> String {
         (2022, 3, Part::Second) => aoc_2022::day03::run_second(input),
         (2022, 4, Part::First) => aoc_2022::day04::run_first(input),
         (2022, 4, Part::Second) => aoc_2022::day04::run_second(input),
-        (_, _, _) => panic!("Not Implemented"),
+        (_, _, _) => panic!("Year {} Day {} Part {:?} not implemented", year, day, part),
     }
 }
