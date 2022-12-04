@@ -50,6 +50,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Sum of priorities:',
                 secondMessage: 'Sum of priorities:',
             },
+            {
+                value: 4,
+                firstMessage: 'Count assignments containing:',
+                secondMessage: 'Count assignments overlapping:',
+            },
         ],
     },
 ];

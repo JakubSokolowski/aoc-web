@@ -19,3 +19,11 @@ pub fn parse_numbers(input: &str) -> Vec<i64> {
         .filter_map(|digits| digits.as_str().parse().ok())
         .collect()
 }
+
+pub fn to_non_empty_lines(input: &str) -> Vec<String> {
+    input
+        .split('\n')
+        .filter(|line| !line.is_empty())
+        .map(|line| line.to_string())
+        .collect()
+}
