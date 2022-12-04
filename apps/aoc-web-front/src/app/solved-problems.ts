@@ -54,6 +54,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 value: 10,
                 firstMessage: 'Syntax error score:',
                 secondMessage: 'Line completion score:'
+            },
+            {
+                value: 11,
+                firstMessage: 'Flash count:',
+                secondMessage: 'First simultaneous flash at step:'
             }
         ]
     },
