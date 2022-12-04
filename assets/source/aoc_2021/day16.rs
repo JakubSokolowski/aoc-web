@@ -1,9 +1,11 @@
 pub fn run_first(input: &str) -> String {
-    version_sum(input).to_string()
+    let trimmed = input.trim();
+    version_sum(trimmed).to_string()
 }
 
 pub fn run_second(input: &str) -> String {
-    eval_packets(input).to_string()
+    let trimmed = input.trim();
+    eval_packets(trimmed).to_string()
 }
 
 #[derive(Eq, PartialEq, Debug)]
@@ -23,10 +25,10 @@ pub struct Packet {
     version: u8,
     type_id: u8,
     subpackets: Vec<Packet>,
-    value: usize,
+    value: i64,
 }
 
-fn parse_packet(mut offset: usize, binary: &str) -> (Packet, usize) {
+fn parse_packet(mut offset: i64, binary: &str) -> (Packet, i64) {
     let version = version(offset, binary);
     offset += 3;
     let type_id = type_id(offset, binary);
@@ -38,22 +40,22 @@ fn parse_packet(mut offset: usize, binary: &str) -> (Packet, usize) {
     }
 }
 
-fn parse_literal(mut offset: usize, version: u8, type_id: u8, binary: &str) -> (Packet, usize) {
+fn parse_literal(mut offset: i64, version: u8, type_id: u8, binary: &str) -> (Packet, i64) {
     let mut literal_str = "".to_string();
 
-    while binary.chars().nth(offset).unwrap() == '1' {
+    while binary.chars().nth(offset as usize).unwrap() == '1' {
         let start = offset + 1;
         let end = offset + 5;
-        literal_str += &binary[start..end];
+        literal_str += &binary[start as usize..end as usize];
         offset += 5;
     }
 
     let start = offset + 1;
     let end = offset + 5;
-    literal_str += &binary[start..end];
+    literal_str += &binary[start as usize..end as usize];
 
     offset += 5;
-    let value = usize::from_str_radix(&literal_str, 2).unwrap();
+    let value = i64::from_str_radix(&literal_str, 2).unwrap();
     let packet = Packet {
         version,
         type_id,
@@ -63,7 +65,7 @@ fn parse_literal(mut offset: usize, version: u8, type_id: u8, binary: &str) -> (
     (packet, offset)
 }
 
-fn parse_operator(mut offset: usize, version: u8, type_id: u8, binary: &str) -> (Packet, usize) {
+fn parse_operator(mut offset: i64, version: u8, type_id: u8, binary: &str) -> (Packet, i64) {
     let mut subpackets: Vec<Packet> = vec![];
     let len_type = length_type(offset, binary);
     offset += 1;
@@ -101,8 +103,8 @@ fn parse_operator(mut offset: usize, version: u8, type_id: u8, binary: &str) -> 
     )
 }
 
-fn eval_packet(p: Packet) -> usize {
-    let children: Vec<usize> = p.subpackets.into_iter().map(eval_packet).collect();
+fn eval_packet(p: Packet) -> i64 {
+    let children: Vec<i64> = p.subpackets.into_iter().map(eval_packet).collect();
     match p.type_id {
         0 => children.into_iter().sum(),
         1 => children.into_iter().product(),
@@ -116,35 +118,35 @@ fn eval_packet(p: Packet) -> usize {
     }
 }
 
-fn sum_version(p: Packet) -> usize {
-    p.version as usize + p.subpackets.into_iter().map(sum_version).sum::<usize>()
+fn sum_version(p: Packet) -> i64 {
+    p.version as i64 + p.subpackets.into_iter().map(sum_version).sum::<i64>()
 }
 
-fn version_sum(input: &str) -> usize {
+fn version_sum(input: &str) -> i64 {
     let binary = hex_to_bin(input);
     let (p, _) = parse_packet(0, &binary);
     sum_version(p)
 }
 
-fn eval_packets(input: &str) -> usize {
+fn eval_packets(input: &str) -> i64 {
     let binary = hex_to_bin(input);
     let (p, _) = parse_packet(0, &binary);
     eval_packet(p)
 }
 
-pub fn version(offset: usize, binary: &str) -> u8 {
-    let version_str = &binary[offset..offset + 3];
+pub fn version(offset: i64, binary: &str) -> u8 {
+    let version_str = &binary[offset as usize..(offset + 3) as usize];
     u8::from_str_radix(version_str, 2).unwrap()
 }
 
-pub fn subpackets_length(offset: usize, binary: &str) -> usize {
-    let length_str = &binary[offset..offset + 15];
-    usize::from_str_radix(length_str, 2).unwrap()
+pub fn subpackets_length(offset: i64, binary: &str) -> i64 {
+    let length_str = &binary[offset as usize..(offset + 15) as usize];
+    i64::from_str_radix(length_str, 2).unwrap()
 }
 
-pub fn subpackets_num(offset: usize, binary: &str) -> usize {
-    let num_str = &binary[offset..offset + 11];
-    usize::from_str_radix(num_str, 2).unwrap()
+pub fn subpackets_num(offset: i64, binary: &str) -> i64 {
+    let num_str = &binary[offset as usize..(offset + 11) as usize];
+    i64::from_str_radix(num_str, 2).unwrap()
 }
 
 fn hex_to_bin(hex: &str) -> String {
@@ -173,8 +175,8 @@ fn to_binary(c: char) -> &'static str {
     }
 }
 
-fn type_id(offset: usize, binary: &str) -> u8 {
-    let version_str = &binary[offset..offset + 3];
+fn type_id(offset: i64, binary: &str) -> u8 {
+    let version_str = &binary[offset as usize..(offset + 3) as usize];
     u8::from_str_radix(version_str, 2).unwrap()
 }
 
@@ -185,8 +187,8 @@ pub fn packet_type(type_id: u8) -> PacketType {
     }
 }
 
-fn length_type(offset: usize, binary: &str) -> LengthType {
-    match binary.chars().nth(offset).unwrap() {
+fn length_type(offset: i64, binary: &str) -> LengthType {
+    match binary.chars().nth(offset as usize).unwrap() {
         '0' => LengthType::SubPacketsTotalLength,
         '1' => LengthType::NumSubPackets,
         _ => unreachable!(),

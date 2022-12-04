@@ -46,7 +46,6 @@ fn pair_values(num: &str, index: usize) -> (i32, i32) {
     (values[0], values[1])
 }
 
-
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
 pub struct PairInfo {
     left: i32,
@@ -73,9 +72,7 @@ fn can_explode(num: &str) -> bool {
 
 fn explode(num: &str) -> String {
     match leftmost_pair(num, 4) {
-        None => {
-            num.to_string()
-        }
+        None => num.to_string(),
         Some(pair) => {
             let start = pair.index;
             let end = start + num.chars().skip(start).take_while(|&c| c != ']').count();
