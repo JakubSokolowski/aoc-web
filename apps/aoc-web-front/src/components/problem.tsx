@@ -4,7 +4,7 @@ import { Part, run } from '@aoc-web/lib-rs';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { tomorrowNight as codeStyle } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import '../styles.scss';
-import { ProblemInfo } from '../app/models';
+import { ComplexMessage, ProblemInfo, ResultMessage } from '../app/models';
 
 function fetchProblemData(year: number, day: number): Promise<Response> {
     const prefix = environment.deployUrl
@@ -68,21 +68,21 @@ const AocProblem: FC<{ info: ProblemInfo }> = ({ info }) => {
     }, [year, day]);
 
     return (
-        <div className='problems-section'>
-            <div className='problem-header'>
+        <div className="problems-section">
+            <div className="problem-header">
                 <span>
                     Year {year} day {day.value}
                 </span>
                 <a
-                    target='_blank'
-                    className='desc-link'
+                    target="_blank"
+                    className="desc-link"
                     href={`https://adventofcode.com/${info.year}/day/${info.day.value}`}
-                    rel='noreferrer'
+                    rel="noreferrer"
                 >
                     [Description]
                 </a>
                 <button
-                    className='accent-button'
+                    className="accent-button"
                     onClick={() => {
                         setShowCode(!showCode);
                         if (!code) {
@@ -123,10 +123,10 @@ const AocProblem: FC<{ info: ProblemInfo }> = ({ info }) => {
                     customStyle={{
                         fontSize: '12px',
                         background: 'none',
-                        padding: 0
+                        padding: 0,
                     }}
                     showLineNumbers={true}
-                    language='rust'
+                    language="rust"
                     style={codeStyle}
                 >
                     {code}
@@ -147,7 +147,7 @@ export const ProblemPart: FC<{
     const [solving, setSolving] = useState(false);
     const [result, setResult] = useState<string>();
 
-    const runPromise = function(
+    const runPromise = function (
         year: number,
         day: number,
         part: Part,
@@ -164,7 +164,7 @@ export const ProblemPart: FC<{
     };
 
     useEffect(() => {
-        if(solving && problem) {
+        if (solving && problem) {
             const start = performance.now();
             runPromise(year, day.value, part, problem)
                 .then((result) => {
@@ -177,20 +177,19 @@ export const ProblemPart: FC<{
         }
     }, [solving]);
 
-
     useEffect(() => {
         setResult(undefined);
         setTime(undefined);
     }, [year, day]);
 
     return (
-        <div className='problem-part'>
-            <div className='problem-actions'>
-                <span className='part-title'>
+        <div className="problem-part">
+            <div className="problem-actions">
+                <span className="part-title">
                     [Part {part === Part.First ? '1' : '2'}]
                 </span>
                 <button
-                    className='accent-button'
+                    className="accent-button"
                     disabled={!problem || loading || solving}
                     onClick={() => {
                         if (problem) {
@@ -203,18 +202,46 @@ export const ProblemPart: FC<{
                 </button>
             </div>
             {!!result && !solving && (
-                <div>
-                    <span>{`${
+                <Result
+                    message={
                         part === Part.First
                             ? day.firstMessage || ''
                             : day.secondMessage || ''
-                    }`}</span>
-                    <span className='solution'>{` ${result}`}</span>
-                    <span>{`, took ${time?.toFixed(1)} ms`}</span>
-                </div>
+                    }
+                    time={time}
+                    result={result}
+                />
             )}
         </div>
     );
+};
+
+function isComplex(msg: ResultMessage): msg is ComplexMessage {
+    return !!(msg as ComplexMessage).display;
+}
+
+const Result: FC<{ message: ResultMessage; result: string; time?: number }> = ({
+    message,
+    time,
+    result,
+}) => {
+    if (isComplex(message)) {
+        return (
+            <div>
+                <div>{`${message.text}`}</div>
+                <pre className="solution-pre">{result}</pre>
+                <div>{`took ${time?.toFixed(1)} ms`}</div>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <span>{`${message}`}</span>
+                <span className="solution">{` ${result}`}</span>
+                <span>{`, took ${time?.toFixed(1)} ms`}</span>
+            </div>
+        );
+    }
 };
 
 export default AocProblem;
