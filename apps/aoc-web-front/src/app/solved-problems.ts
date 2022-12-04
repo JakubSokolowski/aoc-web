@@ -87,6 +87,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 value: 16,
                 firstMessage: 'Version sum:',
                 secondMessage: 'Eval packets result:'
+            },
+            {
+                value: 17,
+                firstMessage: 'Max velocity:',
+                secondMessage: 'Reachable count:'
             }
         ]
     },
