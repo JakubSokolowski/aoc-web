@@ -1,8 +1,16 @@
 export interface DayInfo {
     value: number;
-    firstMessage?: string;
-    secondMessage?: string;
+    firstMessage?: ResultMessage;
+    secondMessage?: ResultMessage;
 }
+
+export type SimpleMessage = string;
+export type ComplexMessage = {
+    display: 'span' | 'pre';
+    text?: string;
+};
+
+export type ResultMessage = SimpleMessage | ComplexMessage;
 
 export interface SolvedYearProblems {
     year: number;
