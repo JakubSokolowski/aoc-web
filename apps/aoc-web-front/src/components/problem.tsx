@@ -68,21 +68,21 @@ const AocProblem: FC<{ info: ProblemInfo }> = ({ info }) => {
     }, [year, day]);
 
     return (
-        <div className="problems-section">
-            <div className="problem-header">
+        <div className='problems-section'>
+            <div className='problem-header'>
                 <span>
                     Year {year} day {day.value}
                 </span>
                 <a
-                    target="_blank"
-                    className="desc-link"
+                    target='_blank'
+                    className='desc-link'
                     href={`https://adventofcode.com/${info.year}/day/${info.day.value}`}
-                    rel="noreferrer"
+                    rel='noreferrer'
                 >
                     [Description]
                 </a>
                 <button
-                    className="accent-button"
+                    className='accent-button'
                     onClick={() => {
                         setShowCode(!showCode);
                         if (!code) {
@@ -123,10 +123,10 @@ const AocProblem: FC<{ info: ProblemInfo }> = ({ info }) => {
                     customStyle={{
                         fontSize: '12px',
                         background: 'none',
-                        padding: 0,
+                        padding: 0
                     }}
                     showLineNumbers={true}
-                    language="rust"
+                    language='rust'
                     style={codeStyle}
                 >
                     {code}
@@ -147,32 +147,52 @@ export const ProblemPart: FC<{
     const [solving, setSolving] = useState(false);
     const [result, setResult] = useState<string>();
 
+    const runPromise = function(
+        year: number,
+        day: number,
+        part: Part,
+        problem: string
+    ): Promise<string> {
+        return new Promise((resolve, reject) => {
+            try {
+                const result = run(year, day, part, problem);
+                resolve(result);
+            } catch (e) {
+                reject(e);
+            }
+        });
+    };
+
     useEffect(() => {
         setResult(undefined);
         setTime(undefined);
     }, [year, day]);
     return (
-        <div className="problem-part">
-            <div className="problem-actions">
-                <span className="part-title">
+        <div className='problem-part'>
+            <div className='problem-actions'>
+                <span className='part-title'>
                     [Part {part === Part.First ? '1' : '2'}]
                 </span>
                 <button
-                    className="accent-button"
+                    className='accent-button'
                     disabled={!problem || loading}
                     onClick={() => {
                         if (problem) {
                             const start = performance.now();
                             setResult(undefined);
                             setSolving(true);
-                            setResult(run(year, day.value, part, problem));
-                            setSolving(false);
-                            const end = performance.now();
-                            setTime(end - start);
+                            runPromise(year, day.value, part, problem)
+                                .then((result) => {
+                                    setResult(result);
+                                    setSolving(false);
+                                    const end = performance.now();
+                                    setTime(end - start);
+                                })
+                                .catch(console.error);
                         }
                     }}
                 >
-                    [Solve]
+                    {solving ? '[Solving...]' : '[Solve]'}
                 </button>
             </div>
             {!!result && !solving && (
@@ -182,7 +202,7 @@ export const ProblemPart: FC<{
                             ? day.firstMessage || ''
                             : day.secondMessage || ''
                     }`}</span>
-                    <span className="solution">{` ${result}`}</span>
+                    <span className='solution'>{` ${result}`}</span>
                     <span>{`, took ${time?.toFixed(1)}ms`}</span>
                 </div>
             )}
