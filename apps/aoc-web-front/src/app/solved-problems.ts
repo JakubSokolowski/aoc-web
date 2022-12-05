@@ -123,6 +123,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Count assignments containing:',
                 secondMessage: 'Count assignments overlapping:',
             },
+            {
+                value: 5,
+                firstMessage: 'Crates at top:',
+                secondMessage: 'Crates at top:',
+            },
         ],
     },
 ];
