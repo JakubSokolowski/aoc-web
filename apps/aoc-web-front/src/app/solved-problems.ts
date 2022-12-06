@@ -128,6 +128,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Crates at top:',
                 secondMessage: 'Crates at top:',
             },
+            {
+                value: 6,
+                firstMessage: 'Chars to process:',
+                secondMessage: 'Chars to process:',
+            },
         ],
     },
 ];

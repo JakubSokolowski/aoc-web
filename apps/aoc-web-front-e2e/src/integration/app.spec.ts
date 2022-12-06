@@ -142,6 +142,11 @@ describe('aoc-web-front', () => {
                         value: 5,
                         first: 'GFTNRBZPF',
                         second: 'VRQWPDSGP'
+                    },
+                    {
+                        value: 6,
+                        first: '1042',
+                        second: '2980'
                     }
                 ]
             }
