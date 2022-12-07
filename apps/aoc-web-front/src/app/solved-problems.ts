@@ -133,6 +133,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Chars to process:',
                 secondMessage: 'Chars to process:',
             },
+            {
+                value: 7,
+                firstMessage: 'Sum of dir sizes:',
+                secondMessage: 'Total size of dir to delete:',
+            },
         ],
     },
 ];
