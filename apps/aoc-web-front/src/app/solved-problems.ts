@@ -142,6 +142,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 value: 8,
                 firstMessage: 'Num visible trees:',
                 secondMessage: 'Highest scenic score:'
+            },
+            {
+                value: 9,
+                firstMessage: 'Num visited positions:',
+                secondMessage: 'Num visited positions:'
             }
         ]
     }
