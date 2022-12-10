@@ -147,6 +147,14 @@ export const solvedProblems: SolvedYearProblems[] = [
                 value: 9,
                 firstMessage: 'Num visited positions:',
                 secondMessage: 'Num visited positions:'
+            },
+            {
+                value: 10,
+                firstMessage: 'Sum of cycle results:',
+                secondMessage: {
+                    display: 'pre',
+                    text: 'CRT Letters: \n'
+                }
             }
         ]
     }
