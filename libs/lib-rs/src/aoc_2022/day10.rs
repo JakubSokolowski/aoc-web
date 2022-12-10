@@ -37,7 +37,7 @@ impl Default for Program {
 }
 
 impl Program {
-    fn sum_cycles(&mut self, instructions: &Vec<Instruction>, cycles: &HashSet<i64>) -> i64 {
+    fn sum_cycles(&mut self, instructions: &[Instruction], cycles: &HashSet<i64>) -> i64 {
         self.result = 1;
         self.cycle = 0;
         self.sum = 0;
@@ -66,7 +66,7 @@ impl Program {
         }
     }
 
-    fn compute_sprite(&mut self, instructions: &Vec<Instruction>, cycles: &HashSet<i64>) -> String {
+    fn compute_sprite(&mut self, instructions: &[Instruction], cycles: &HashSet<i64>) -> String {
         self.result = 1;
         self.cycle = 0;
         self.sum = 0;
