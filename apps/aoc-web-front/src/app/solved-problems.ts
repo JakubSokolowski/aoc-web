@@ -155,7 +155,12 @@ export const solvedProblems: SolvedYearProblems[] = [
                     display: 'pre',
                     text: 'CRT Letters: \n'
                 }
-            }
+            },
+            {
+                value: 11,
+                firstMessage: 'Monkey business after 20 rounds:',
+                secondMessage: 'Monkey business after 10 000 rounds:'
+            },
         ]
     }
 ];
