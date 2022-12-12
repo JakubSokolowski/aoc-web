@@ -1,8 +1,9 @@
 const getProblemButton = (year: number, day: number) => cy.getByDataTest(`problem-${year}-${day}`);
 const hasProperSolution = (part: 'first' | 'second', solution: string) => {
     cy.getByDataTest(`solve-${part}`).click();
-    cy.getByDataTest(`solution-${part}`, {timeout: 30000}).contains(solution);
-}
+    cy.getByDataTest(`solution-${part}`, { timeout: 30000 }).contains(solution);
+};
+
 interface YearSolutions {
     value: number;
     days: DaySolutions[]
@@ -112,7 +113,7 @@ describe('aoc-web-front', () => {
                         value: 18,
                         first: '4132',
                         second: '4685'
-                    },
+                    }
                 ]
             },
             {
@@ -167,6 +168,11 @@ describe('aoc-web-front', () => {
                         value: 11,
                         first: '121450',
                         second: '28244037010'
+                    },
+                    {
+                        value: 12,
+                        first: '361',
+                        second: '354'
                     }
                 ]
             }
@@ -175,8 +181,8 @@ describe('aoc-web-front', () => {
         solutions.forEach((year) => {
             year.days.forEach((day) => {
                 getProblemButton(year.value, day.value).click();
-                hasProperSolution("first", day.first);
-                hasProperSolution("second", day.second);
+                hasProperSolution('first', day.first);
+                hasProperSolution('second', day.second);
             });
         });
     });
