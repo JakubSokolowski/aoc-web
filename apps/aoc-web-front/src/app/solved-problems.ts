@@ -161,6 +161,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Monkey business after 20 rounds:',
                 secondMessage: 'Monkey business after 10 000 rounds:'
             },
+            {
+                value: 12,
+                firstMessage: 'Shortest path:',
+                secondMessage: 'Shortest path from all "a" hills:'
+            },
         ]
     }
 ];
