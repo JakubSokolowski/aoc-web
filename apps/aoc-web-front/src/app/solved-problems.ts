@@ -166,6 +166,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Shortest path:',
                 secondMessage: 'Shortest path from all "a" hills:'
             },
+            {
+                value: 13,
+                firstMessage: 'Sum of indices:',
+                secondMessage: 'Decoder key:'
+            },
         ]
     }
 ];
