@@ -171,6 +171,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Sum of indices:',
                 secondMessage: 'Decoder key:'
             },
+            {
+                value: 14,
+                firstMessage: 'Abyss count:',
+                secondMessage: 'Fill count:'
+            },
         ]
     }
 ];
