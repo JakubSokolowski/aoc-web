@@ -176,6 +176,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Abyss count:',
                 secondMessage: 'Fill count:'
             },
+            {
+                value: 15,
+                firstMessage: 'Invalid count:',
+                secondMessage: 'Tuning freq:'
+            },
         ]
     }
 ];

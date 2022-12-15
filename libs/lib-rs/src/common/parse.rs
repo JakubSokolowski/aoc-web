@@ -20,6 +20,15 @@ pub fn parse_numbers(input: &str) -> Vec<i64> {
         .collect()
 }
 
+pub fn parse_signed_numbers(input: &str) -> Vec<i64> {
+    lazy_static! {
+        static ref RE: Regex = Regex::new(r"-?\d+").unwrap();
+    }
+    RE.find_iter(input)
+        .filter_map(|digits| digits.as_str().parse().ok())
+        .collect()
+}
+
 pub fn to_non_empty_lines(input: &str) -> Vec<String> {
     input
         .split('\n')
