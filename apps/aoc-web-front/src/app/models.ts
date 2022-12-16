@@ -8,6 +8,7 @@ export interface DayInfo {
 
 export type SimpleMessage = string;
 export type ComplexMessage = {
+    longBruteforce?: boolean;
     display: 'span' | 'pre';
     text?: string;
 };

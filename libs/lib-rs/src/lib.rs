@@ -6,7 +6,7 @@ use wasm_bindgen::prelude::*;
 mod aoc_2021;
 mod aoc_2022;
 mod common;
-mod utils;
+pub mod utils;
 
 #[macro_export]
 macro_rules! log {
@@ -38,6 +38,10 @@ pub enum Part {
 #[wasm_bindgen]
 pub fn run(year: usize, day: usize, part: Part, input: &str) -> String {
     utils::set_panic_hook();
+    run_base(year, day, part, input)
+}
+
+pub fn run_base(year: usize, day: usize, part: Part, input: &str) -> String {
     match (year, day, part) {
         // 2021
         (2021, 1, Part::First) => aoc_2021::day01::run_first(input),
@@ -108,6 +112,8 @@ pub fn run(year: usize, day: usize, part: Part, input: &str) -> String {
         (2022, 14, Part::Second) => aoc_2022::day14::run_second(input),
         (2022, 15, Part::First) => aoc_2022::day15::run_first(input),
         (2022, 15, Part::Second) => aoc_2022::day15::run_second(input),
+        (2022, 16, Part::First) => aoc_2022::day16::run_first(input),
+        (2022, 16, Part::Second) => aoc_2022::day16::run_second(input),
         (_, _, _) => panic!("Year {} Day {} Part {:?} not implemented", year, day, part),
     }
 }
