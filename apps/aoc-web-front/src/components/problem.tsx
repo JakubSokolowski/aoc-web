@@ -69,21 +69,21 @@ const AocProblem: FC<{ info: ProblemInfo }> = ({ info }) => {
     }, [year, day]);
 
     return (
-        <div className="problems-section">
-            <div className="problem-header">
+        <div className='problems-section'>
+            <div className='problem-header'>
                 <span>
                     Year {year} day {day.value}
                 </span>
                 <a
-                    target="_blank"
-                    className="desc-link"
+                    target='_blank'
+                    className='desc-link'
                     href={`https://adventofcode.com/${info.year}/day/${info.day.value}`}
-                    rel="noreferrer"
+                    rel='noreferrer'
                 >
                     [Description]
                 </a>
                 <button
-                    className="accent-button"
+                    className='accent-button'
                     onClick={() => {
                         setShowCode(!showCode);
                         if (!code) {
@@ -124,10 +124,10 @@ const AocProblem: FC<{ info: ProblemInfo }> = ({ info }) => {
                     customStyle={{
                         fontSize: '12px',
                         background: 'none',
-                        padding: 0,
+                        padding: 0
                     }}
                     showLineNumbers={true}
-                    language="rust"
+                    language='rust'
                     style={codeStyle}
                 >
                     {code}
@@ -148,7 +148,7 @@ export const ProblemPart: FC<{
     const [solving, setSolving] = useState(false);
     const [result, setResult] = useState<string>();
 
-    const runPromise = function (
+    const runPromise = function(
         year: number,
         day: number,
         part: Part,
@@ -183,15 +183,21 @@ export const ProblemPart: FC<{
         setTime(undefined);
     }, [year, day]);
 
+    const isLongBruteforce = (part: Part) => {
+        return part === Part.First
+            ? (info.day.firstMessage as ComplexMessage).longBruteforce
+            : (info.day.secondMessage as ComplexMessage).longBruteforce;
+    };
+
     return (
-        <div className="problem-part">
-            <div className="problem-actions">
-                <span className="part-title">
+        <div className='problem-part'>
+            <div className='problem-actions'>
+                <span className='part-title'>
                     [Part {part === Part.First ? '1' : '2'}]
                 </span>
                 <button
                     data-test={`solve-${part === Part.First ? 'first' : 'second'}`}
-                    className="accent-button"
+                    className='accent-button'
                     disabled={!problem || loading || solving}
                     onClick={() => {
                         if (problem) {
@@ -202,6 +208,12 @@ export const ProblemPart: FC<{
                 >
                     {solving ? '[Solving...]' : '[Solve]'}
                 </button>
+                {
+                    isLongBruteforce(part) &&
+                    <span className='bruteforce-warning' title={"Hacky bruteforce solution, may crash your browser"}>
+                        [Bruteforce]
+                    </span>
+                }
             </div>
             {!!result && !solving && (
                 <Result
@@ -229,7 +241,7 @@ const Result: FC<{
     time?: number;
     part: Part;
 }> = ({ message, time, result, part }) => {
-    if (isComplex(message)) {
+    if (isComplex(message) && message.display === 'pre') {
         return (
             <div>
                 <div>{`${message.text}`}</div>
@@ -237,7 +249,7 @@ const Result: FC<{
                     data-test={`solution-${
                         part === Part.First ? 'first' : 'second'
                     }`}
-                    className="solution-pre"
+                    className='solution-pre'
                 >
                     {result}
                 </pre>
@@ -252,7 +264,7 @@ const Result: FC<{
                     data-test={`solution-${
                         part === Part.First ? 'first' : 'second'
                     }`}
-                    className="solution"
+                    className='solution'
                 >{` ${result}`}</span>
                 <span>{`, took ${time?.toFixed(1)} ms`}</span>
             </div>

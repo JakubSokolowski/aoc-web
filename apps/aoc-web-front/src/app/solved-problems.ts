@@ -181,6 +181,15 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Invalid count:',
                 secondMessage: 'Tuning freq:'
             },
+            {
+                value: 16,
+                firstMessage: 'Released pressure:',
+                secondMessage: {
+                    display: 'span',
+                    longBruteforce: true,
+                    text: 'Released pressure with elefan fren:'
+                }
+            },
         ]
     }
 ];

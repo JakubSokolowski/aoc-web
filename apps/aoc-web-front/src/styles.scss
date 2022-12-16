@@ -69,6 +69,16 @@
     align-self: flex-start;
 }
 
+.bruteforce-warning {
+    color: #e6410b;
+    text-shadow: 0 0 5px #e6410b;
+}
+
+.accent-button:hover {
+    color: #99ff99;
+}
+
+
 .problem-button {
     border: none;
     background: none;
@@ -88,8 +98,4 @@
 
 .problem-button:active {
     color: #cccccc;
-}
-
-.accent-button:hover {
-    color: #99ff99;
 }

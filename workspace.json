@@ -190,7 +190,7 @@
           "options": {
             "commands": [
               {
-                "command": "wasm-pack build"
+                "command": "wasm-pack build --release"
               }
             ],
             "cwd": "libs/lib-rs"

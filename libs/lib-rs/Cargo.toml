@@ -4,6 +4,10 @@ version = "0.1.0"
 authors = ["jakub"]
 edition = "2021"
 
+[[bin]]
+name = "console"
+path = "src/main.rs"
+
 [lib]
 crate-type = ["cdylib", "rlib"]
 
