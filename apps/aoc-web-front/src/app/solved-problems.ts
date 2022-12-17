@@ -190,6 +190,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                     text: 'Released pressure with elefan fren:'
                 }
             },
+            {
+                value: 17,
+                firstMessage: 'Tower height:',
+                secondMessage: 'Tower height:'
+            },
         ]
     }
 ];
