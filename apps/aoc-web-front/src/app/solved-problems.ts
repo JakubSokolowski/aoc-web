@@ -195,6 +195,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Tower height:',
                 secondMessage: 'Tower height:'
             },
+            {
+                value: 18,
+                firstMessage: 'Surface area:',
+                secondMessage: 'Exterior surface area:'
+            },
         ]
     }
 ];

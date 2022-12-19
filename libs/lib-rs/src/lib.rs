@@ -116,6 +116,8 @@ pub fn run_base(year: usize, day: usize, part: Part, input: &str) -> String {
         (2022, 16, Part::Second) => aoc_2022::day16::run_second(input),
         (2022, 17, Part::First) => aoc_2022::day17::run_first(input),
         (2022, 17, Part::Second) => aoc_2022::day17::run_second(input),
+        (2022, 18, Part::First) => aoc_2022::day18::run_first(input),
+        (2022, 18, Part::Second) => aoc_2022::day18::run_second(input),
         (_, _, _) => panic!("Year {} Day {} Part {:?} not implemented", year, day, part),
     }
 }
