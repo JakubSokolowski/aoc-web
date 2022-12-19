@@ -200,6 +200,19 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: 'Surface area:',
                 secondMessage: 'Exterior surface area:'
             },
+            {
+                value: 19,
+                firstMessage: {
+                    display: 'span',
+                    longBruteforce: true,
+                    text: 'Quality level sum:'
+                },
+                secondMessage: {
+                    display: 'span',
+                    longBruteforce: true,
+                    text: 'Top 3 mined product:'
+                }
+            },
         ]
     }
 ];

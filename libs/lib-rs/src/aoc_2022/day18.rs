@@ -2,6 +2,16 @@ use std::collections::{HashSet, VecDeque};
 
 use crate::common::parse::{parse_numbers, to_non_empty_lines};
 
+pub fn run_first(input: &str) -> String {
+    let points = parse_input(input);
+    surface_area(&points).to_string()
+}
+
+pub fn run_second(input: &str) -> String {
+    let points = parse_input(input);
+    exterior_surface_area(&points).to_string()
+}
+
 #[derive(Hash, Eq, PartialEq, Debug, Copy, Clone)]
 struct Point3D {
     x: i64,
@@ -45,11 +55,6 @@ impl Point3D {
 
         deltas.iter().map(|d| self.move_by(d)).collect()
     }
-}
-
-pub fn run_first(input: &str) -> String {
-    let points = parse_input(input);
-    surface_area(&points).to_string()
 }
 
 fn surface_area(points: &HashSet<Point3D>) -> i64 {
@@ -114,11 +119,6 @@ fn exterior_surface_area(points: &HashSet<Point3D>) -> i64 {
     }
 
     surface_size
-}
-
-pub fn run_second(input: &str) -> String {
-    let points = parse_input(input);
-    exterior_surface_area(&points).to_string()
 }
 
 fn parse_input(input: &str) -> HashSet<Point3D> {
