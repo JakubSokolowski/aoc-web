@@ -259,7 +259,7 @@ const Result: FC<{
     } else {
         return (
             <div>
-                <span>{`${message}`}</span>
+                <span>{`${isComplex(message) ? message.text : message}`}</span>
                 <span
                     data-test={`solution-${
                         part === Part.First ? 'first' : 'second'
