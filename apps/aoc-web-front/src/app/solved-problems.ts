@@ -213,6 +213,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                     text: 'Top 3 mined product:'
                 }
             },
+            {
+                value: 20,
+                firstMessage: 'Sum after 1 mix:',
+                secondMessage: 'Sum after 10 mixes:'
+            },
         ]
     }
 ];
