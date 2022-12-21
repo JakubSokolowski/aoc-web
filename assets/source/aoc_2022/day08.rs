@@ -175,7 +175,7 @@ impl Grid {
             .cartesian_product(0..self.width)
             .map(|(r, c)| self.viewing_distance(r, c))
             .max()
-            .unwrap() as i64
+            .unwrap()
     }
 
     fn is_edge(&self, row: i64, column: i64) -> bool {

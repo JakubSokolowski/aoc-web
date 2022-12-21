@@ -88,7 +88,7 @@ fn parse_command(cmd: &str) -> SubmarineCommand {
         "forward" => SubmarineCommandType::Forward,
         "up" => SubmarineCommandType::Up,
         "down" => SubmarineCommandType::Down,
-        _ => panic!("Could not match command {}", cmd),
+        _ => panic!("Could not match command {cmd}"),
     };
 
     SubmarineCommand {

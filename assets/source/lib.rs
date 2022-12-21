@@ -1,4 +1,5 @@
 #![allow(clippy::unused_unit)]
+extern crate core;
 extern crate js_sys;
 
 use wasm_bindgen::prelude::*;
@@ -122,6 +123,8 @@ pub fn run_base(year: usize, day: usize, part: Part, input: &str) -> String {
         (2022, 19, Part::Second) => aoc_2022::day19::run_second(input),
         (2022, 20, Part::First) => aoc_2022::day20::run_first(input),
         (2022, 20, Part::Second) => aoc_2022::day20::run_second(input),
-        (_, _, _) => panic!("Year {} Day {} Part {:?} not implemented", year, day, part),
+        (2022, 21, Part::First) => aoc_2022::day21::run_first(input),
+        (2022, 21, Part::Second) => aoc_2022::day21::run_second(input),
+        (_, _, _) => panic!("Year {year} Day {day} Part {part:?} not implemented"),
     }
 }
