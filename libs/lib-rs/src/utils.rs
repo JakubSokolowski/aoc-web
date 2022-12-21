@@ -33,7 +33,7 @@ pub fn get_path(year: u32, day: u8, bigboy: bool) -> String {
 pub fn read_to_string(year: u32, day: u8, bigboy: bool) -> String {
     let data_path = get_path(year, day, bigboy);
     let mut fp =
-        File::open(&data_path).unwrap_or_else(|_| panic!("Cannot open file at {}", data_path));
+        File::open(&data_path).unwrap_or_else(|_| panic!("Cannot open file at {data_path}"));
     let mut buf = String::new();
     fp.read_to_string(&mut buf).unwrap();
     buf.trim_end().to_string()

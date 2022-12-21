@@ -61,8 +61,8 @@ pub fn compare(left: &str, right: &str) -> i32 {
                 -1
             }
         }
-        (Type::Integer, Type::List) => compare(&format!("[{}]", left), right),
-        (Type::List, Type::Integer) => compare(left, &format!("[{}]", right)),
+        (Type::Integer, Type::List) => compare(&format!("[{left}]"), right),
+        (Type::List, Type::Integer) => compare(left, &format!("[{right}]")),
         _ => {
             let mut left_children = get_children(left);
             let mut right_children = get_children(right);

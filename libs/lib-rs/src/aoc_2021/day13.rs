@@ -127,10 +127,10 @@ impl fmt::Display for Paper {
                     line += "  "
                 }
             }
-            display_str += &*format!("{}\n", line);
+            display_str += &*format!("{line}\n");
         }
 
-        write!(f, "{}", display_str)
+        write!(f, "{display_str}")
     }
 }
 
@@ -145,7 +145,7 @@ fn code(input: &str) -> String {
     for fold in &folds {
         paper.apply_fold(fold);
     }
-    println!("{}", paper);
+    println!("{paper}");
     paper.to_string()
 }
 

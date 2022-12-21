@@ -175,7 +175,7 @@ fn points_to_string(points: &HashSet<Point>, max_height: i64) -> String {
                 line += " ";
             }
         }
-        display_str += &*format!("{}|\n", line);
+        display_str += &*format!("{line}|\n");
     }
     display_str += "+-------+";
     display_str
@@ -184,7 +184,7 @@ fn points_to_string(points: &HashSet<Point>, max_height: i64) -> String {
 impl fmt::Display for Rocktris {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
         let display_str = points_to_string(&self.rocks, self.max_height() + 3);
-        write!(f, "{}", display_str)
+        write!(f, "{display_str}")
     }
 }
 
@@ -247,7 +247,7 @@ fn parse_jets(input: &str) -> Vec<i64> {
         .map(|c| match c {
             '>' => 1,
             '<' => -1,
-            _ => panic!("Unexpected character: {}", c),
+            _ => panic!("Unexpected character: {c}"),
         })
         .collect()
 }
