@@ -82,9 +82,8 @@ fn explode(num: &str) -> String {
             if can_right && can_left {
                 let (left_part, after_left) = left_part(num, pair, start);
                 let (right_part, after_right) = right_part(num, pair, end);
-                let to_replace =
-                    format!("{}[{},{}]{}", left_part, pair.left, pair.right, right_part);
-                let replace_with = format!("{}0{}", after_left, after_right);
+                let to_replace = format!("{left_part}[{},{}]{right_part}", pair.left, pair.right);
+                let replace_with = format!("{after_left}0{after_right}");
 
                 return num.replacen(&to_replace, &replace_with, 1);
             }
@@ -120,8 +119,8 @@ fn left_part(num: &str, pair: PairInfo, start: usize) -> (String, String) {
     let new_num = left_num + pair.left;
 
     // first new number, then old part
-    let before = format!("{}{}", rev_num_str, rev_part);
-    let after = format!("{}{}", new_num, rev_part);
+    let before = format!("{rev_num_str}{rev_part}");
+    let after = format!("{new_num}{rev_part}");
 
     (before, after)
 }
@@ -150,13 +149,13 @@ fn split_num(num: &str, split: i32) -> String {
     let half = (split as f64) / 2.0;
     let left = half.floor() as i32;
     let right = half.ceil() as i32;
-    let to_replace = format!("{}", split);
-    let replace_with = format!("[{},{}]", left, right);
+    let to_replace = format!("{split}");
+    let replace_with = format!("[{left},{right}]");
     num.replacen(&to_replace, &replace_with, 1)
 }
 
 fn add(left: &str, right: &str) -> String {
-    format!("[{},{}]", left, right)
+    format!("[{left},{right}]")
 }
 
 fn add_all(pairs: &[String]) -> String {
@@ -232,15 +231,15 @@ fn explode_left(num: &str, pair: PairInfo, start: usize) -> String {
     let left_num = rev.parse::<i32>().unwrap();
 
     let new_left = left_num + pair.left;
-    let to_replace = format!("[{},[{},{}]]", left_num, pair.left, pair.right);
-    let replace_with = format!("[{},0]", new_left);
+    let to_replace = format!("[{left_num},[{},{}]]", pair.left, pair.right);
+    let replace_with = format!("[{new_left},0]");
     num.replacen(&to_replace, &replace_with, 1)
 }
 
 fn explode_right(num: &str, pair: PairInfo, end: usize) -> String {
     let (before, after) = right_part(num, pair, end);
     let to_replace = format!("{}{}", pair.str_rep(), before);
-    let replace_with = format!("0{}", after);
+    let replace_with = format!("0{after}");
     num.replacen(&to_replace, &replace_with, 1)
 }
 

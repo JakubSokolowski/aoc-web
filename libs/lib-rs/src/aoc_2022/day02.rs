@@ -37,7 +37,7 @@ pub fn get_result(opponent_move: &str, your_move: &str) -> i64 {
         ("C", "Y") => 0,
         ("C", "Z") => 3,
 
-        (_, _) => panic!("Invalid input {} {}", opponent_move, your_move),
+        (_, _) => panic!("Invalid input {opponent_move} {your_move}"),
     }
 }
 
@@ -53,7 +53,7 @@ pub fn get_move(opponent: &str, strategy: &str) -> String {
         ("C", "Y") => "Z".to_string(),
         ("C", "Z") => "X".to_string(),
 
-        (_, _) => panic!("Invalid input {} {}", opponent, strategy),
+        (_, _) => panic!("Invalid input {opponent} {strategy}"),
     }
 }
 

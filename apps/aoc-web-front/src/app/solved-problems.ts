@@ -1,4 +1,4 @@
-import { SolvedYearProblems } from './models';
+import { SolvedYearProblems } from "./models";
 
 export const solvedProblems: SolvedYearProblems[] = [
     {
@@ -6,97 +6,97 @@ export const solvedProblems: SolvedYearProblems[] = [
         days: [
             {
                 value: 1,
-                firstMessage: 'Num measurements larger then previous:',
+                firstMessage: "Num measurements larger then previous:",
                 secondMessage:
-                    'Num measurements larger then previous in 3-wide sliding window:'
+                    "Num measurements larger then previous in 3-wide sliding window:"
             },
             {
                 value: 2,
-                firstMessage: 'Total area:',
-                secondMessage: 'Total aim area:'
+                firstMessage: "Total area:",
+                secondMessage: "Total aim area:"
             },
             {
                 value: 3,
-                firstMessage: 'Power consumption:',
-                secondMessage: 'Life support rating:'
+                firstMessage: "Power consumption:",
+                secondMessage: "Life support rating:"
             },
             {
                 value: 4,
-                firstMessage: 'First winner score:',
-                secondMessage: 'Last winner score:'
+                firstMessage: "First winner score:",
+                secondMessage: "Last winner score:"
             },
             {
                 value: 5,
-                firstMessage: 'Number of overlapping points:',
-                secondMessage: 'Number of overlapping points with diagonal:'
+                firstMessage: "Number of overlapping points:",
+                secondMessage: "Number of overlapping points with diagonal:"
             },
             {
                 value: 6,
-                firstMessage: 'Population size after 80 days:',
-                secondMessage: 'Population size after 256 days:'
+                firstMessage: "Population size after 80 days:",
+                secondMessage: "Population size after 256 days:"
             },
             {
                 value: 7,
-                firstMessage: 'Total fuel spend:',
-                secondMessage: 'Total fuel spend:'
+                firstMessage: "Total fuel spend:",
+                secondMessage: "Total fuel spend:"
             },
             {
                 value: 8,
-                firstMessage: 'Num times 1,4,7,8 appear:',
-                secondMessage: 'Output sum:'
+                firstMessage: "Num times 1,4,7,8 appear:",
+                secondMessage: "Output sum:"
             },
             {
                 value: 9,
-                firstMessage: 'Heightmap risk:',
-                secondMessage: 'Largest basin product:'
+                firstMessage: "Heightmap risk:",
+                secondMessage: "Largest basin product:"
             },
             {
                 value: 10,
-                firstMessage: 'Syntax error score:',
-                secondMessage: 'Line completion score:'
+                firstMessage: "Syntax error score:",
+                secondMessage: "Line completion score:"
             },
             {
                 value: 11,
-                firstMessage: 'Flash count:',
-                secondMessage: 'First simultaneous flash at step:'
+                firstMessage: "Flash count:",
+                secondMessage: "First simultaneous flash at step:"
             },
             {
                 value: 12,
-                firstMessage: 'Paths count:',
-                secondMessage: 'Paths count:'
+                firstMessage: "Paths count:",
+                secondMessage: "Paths count:"
             },
             {
                 value: 13,
-                firstMessage: 'Dots after first fold:',
+                firstMessage: "Dots after first fold:",
                 secondMessage: {
-                    display: 'pre',
-                    text: 'Code: \n'
+                    display: "pre",
+                    text: "Code: \n"
                 }
             },
             {
                 value: 14,
-                firstMessage: 'Difference after 10 steps:',
-                secondMessage: 'Difference after 40 steps:'
+                firstMessage: "Difference after 10 steps:",
+                secondMessage: "Difference after 40 steps:"
             },
             {
                 value: 15,
-                firstMessage: 'Lowest total risk:',
-                secondMessage: 'Lowest total risk:'
+                firstMessage: "Lowest total risk:",
+                secondMessage: "Lowest total risk:"
             },
             {
                 value: 16,
-                firstMessage: 'Version sum:',
-                secondMessage: 'Eval packets result:'
+                firstMessage: "Version sum:",
+                secondMessage: "Eval packets result:"
             },
             {
                 value: 17,
-                firstMessage: 'Max velocity:',
-                secondMessage: 'Reachable count:'
+                firstMessage: "Max velocity:",
+                secondMessage: "Reachable count:"
             },
             {
                 value: 18,
-                firstMessage: 'Final sum magnitude:',
-                secondMessage: 'Largest magnitude:'
+                firstMessage: "Final sum magnitude:",
+                secondMessage: "Largest magnitude:"
             }
         ]
     },
@@ -105,119 +105,124 @@ export const solvedProblems: SolvedYearProblems[] = [
         days: [
             {
                 value: 1,
-                firstMessage: 'Total calories top Elf is carrying:',
-                secondMessage: 'Total calories top 3 Elves are carrying:'
+                firstMessage: "Total calories top Elf is carrying:",
+                secondMessage: "Total calories top 3 Elves are carrying:"
             },
             {
                 value: 2,
-                firstMessage: 'Total score for strategy:',
-                secondMessage: 'Total score for strategy:'
+                firstMessage: "Total score for strategy:",
+                secondMessage: "Total score for strategy:"
             },
             {
                 value: 3,
-                firstMessage: 'Sum of priorities:',
-                secondMessage: 'Sum of priorities:'
+                firstMessage: "Sum of priorities:",
+                secondMessage: "Sum of priorities:"
             },
             {
                 value: 4,
-                firstMessage: 'Count assignments containing:',
-                secondMessage: 'Count assignments overlapping:'
+                firstMessage: "Count assignments containing:",
+                secondMessage: "Count assignments overlapping:"
             },
             {
                 value: 5,
-                firstMessage: 'Crates at top:',
-                secondMessage: 'Crates at top:'
+                firstMessage: "Crates at top:",
+                secondMessage: "Crates at top:"
             },
             {
                 value: 6,
-                firstMessage: 'Chars to process:',
-                secondMessage: 'Chars to process:'
+                firstMessage: "Chars to process:",
+                secondMessage: "Chars to process:"
             },
             {
                 value: 7,
-                firstMessage: 'Sum of dir sizes:',
-                secondMessage: 'Total size of dir to delete:'
+                firstMessage: "Sum of dir sizes:",
+                secondMessage: "Total size of dir to delete:"
             },
             {
                 value: 8,
-                firstMessage: 'Num visible trees:',
-                secondMessage: 'Highest scenic score:'
+                firstMessage: "Num visible trees:",
+                secondMessage: "Highest scenic score:"
             },
             {
                 value: 9,
-                firstMessage: 'Num visited positions:',
-                secondMessage: 'Num visited positions:'
+                firstMessage: "Num visited positions:",
+                secondMessage: "Num visited positions:"
             },
             {
                 value: 10,
-                firstMessage: 'Sum of cycle results:',
+                firstMessage: "Sum of cycle results:",
                 secondMessage: {
-                    display: 'pre',
-                    text: 'CRT Letters: \n'
+                    display: "pre",
+                    text: "CRT Letters: \n"
                 }
             },
             {
                 value: 11,
-                firstMessage: 'Monkey business after 20 rounds:',
-                secondMessage: 'Monkey business after 10 000 rounds:'
+                firstMessage: "Monkey business after 20 rounds:",
+                secondMessage: "Monkey business after 10 000 rounds:"
             },
             {
                 value: 12,
-                firstMessage: 'Shortest path:',
-                secondMessage: 'Shortest path from all "a" hills:'
+                firstMessage: "Shortest path:",
+                secondMessage: "Shortest path from all \"a\" hills:"
             },
             {
                 value: 13,
-                firstMessage: 'Sum of indices:',
-                secondMessage: 'Decoder key:'
+                firstMessage: "Sum of indices:",
+                secondMessage: "Decoder key:"
             },
             {
                 value: 14,
-                firstMessage: 'Abyss count:',
-                secondMessage: 'Fill count:'
+                firstMessage: "Abyss count:",
+                secondMessage: "Fill count:"
             },
             {
                 value: 15,
-                firstMessage: 'Invalid count:',
-                secondMessage: 'Tuning freq:'
+                firstMessage: "Invalid count:",
+                secondMessage: "Tuning freq:"
             },
             {
                 value: 16,
-                firstMessage: 'Released pressure:',
+                firstMessage: "Released pressure:",
                 secondMessage: {
-                    display: 'span',
+                    display: "span",
                     longBruteforce: true,
-                    text: 'Released pressure with elefan fren:'
+                    text: "Released pressure with elefan fren:"
                 }
             },
             {
                 value: 17,
-                firstMessage: 'Tower height:',
-                secondMessage: 'Tower height:'
+                firstMessage: "Tower height:",
+                secondMessage: "Tower height:"
             },
             {
                 value: 18,
-                firstMessage: 'Surface area:',
-                secondMessage: 'Exterior surface area:'
+                firstMessage: "Surface area:",
+                secondMessage: "Exterior surface area:"
             },
             {
                 value: 19,
                 firstMessage: {
-                    display: 'span',
+                    display: "span",
                     longBruteforce: true,
-                    text: 'Quality level sum:'
+                    text: "Quality level sum:"
                 },
                 secondMessage: {
-                    display: 'span',
+                    display: "span",
                     longBruteforce: true,
-                    text: 'Top 3 mined product:'
+                    text: "Top 3 mined product:"
                 }
             },
             {
                 value: 20,
-                firstMessage: 'Sum after 1 mix:',
-                secondMessage: 'Sum after 10 mixes:'
+                firstMessage: "Sum after 1 mix:",
+                secondMessage: "Sum after 10 mixes:"
             },
+            {
+                value: 21,
+                firstMessage: "Monkey root yells:",
+                secondMessage: "Num to pass equality test:"
+            }
         ]
     }
 ];

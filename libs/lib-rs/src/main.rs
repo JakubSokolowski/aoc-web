@@ -11,7 +11,7 @@ fn main() {
     let year: u32 = argv[1].parse().expect("Year must be a number");
     let day: u8 = argv[2].parse().expect("Day must be a number");
     let bigboy = argv.get(3).is_some();
-    println!("Running year {}, day {}", year, day);
+    println!("Running year {year}, day {day}");
 
     let input = read_to_string(year, day, bigboy);
     println!(
