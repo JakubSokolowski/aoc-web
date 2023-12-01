@@ -224,5 +224,15 @@ export const solvedProblems: SolvedYearProblems[] = [
                 secondMessage: "Num to pass equality test:"
             }
         ]
+    },
+    {
+        year: 2023,
+        days: [
+            {
+                value: 1,
+                firstMessage: "The sum of total calibration values:",
+                secondMessage: "The sum of total calibration values (digit words):"
+            },
+        ]
     }
 ];
