@@ -6,6 +6,7 @@ use wasm_bindgen::prelude::*;
 
 mod aoc_2021;
 mod aoc_2022;
+mod aoc_2023;
 mod common;
 pub mod utils;
 
@@ -125,6 +126,11 @@ pub fn run_base(year: usize, day: usize, part: Part, input: &str) -> String {
         (2022, 20, Part::Second) => aoc_2022::day20::run_second(input),
         (2022, 21, Part::First) => aoc_2022::day21::run_first(input),
         (2022, 21, Part::Second) => aoc_2022::day21::run_second(input),
+
+        // 2023
+        (2023, 1, Part::First) => aoc_2023::day01::run_first(input),
+        (2023, 1, Part::Second) => aoc_2023::day01::run_second(input),
+
         (_, _, _) => panic!("Year {year} Day {day} Part {part:?} not implemented"),
     }
 }
