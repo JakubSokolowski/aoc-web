@@ -210,6 +210,21 @@ describe('aoc-web-front', () => {
                         second: '3330805295850'
                     }
                 ]
+            },
+            {
+                value: 2023,
+                days: [
+                    {
+                        value: 1,
+                        first: '55447',
+                        second: '54706'
+                    },
+                    {
+                        value: 2,
+                        first: '3035',
+                        second: '66027'
+                    }
+                ]
             }
         ];
 

@@ -233,6 +233,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: "The sum of total calibration values:",
                 secondMessage: "The sum of total calibration values (digit words):"
             },
+            {
+                value: 2,
+                firstMessage: "The sum of valid games IDs:",
+                secondMessage: "The sum of sets powers:"
+            },
         ]
     }
 ];
