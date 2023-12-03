@@ -1,4 +1,3 @@
-
 const DIGITS: [&str; 9] = [
     "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
 ];
@@ -70,7 +69,6 @@ fn find_last_digit(line: &str) -> i64 {
         }
     }
 }
-
 
 fn get_digit_value(digit: &str) -> Option<i64> {
     let idx = DIGITS.iter().position(|&d| d == digit).unwrap();
