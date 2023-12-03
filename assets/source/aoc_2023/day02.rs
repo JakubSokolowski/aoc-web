@@ -1,13 +1,13 @@
 pub fn run_first(input: &str) -> String {
     let constraints = (12, 13, 14);
 
-    input.
-        split('\n')
+    input
+        .split('\n')
         .map(parse_line)
-        .filter(|(_, game_draws)| {
-            is_valid_game(constraints, game_draws)
-        }).map(|(game_id, _)| game_id)
-        .sum::<usize>().to_string()
+        .filter(|(_, game_draws)| is_valid_game(constraints, game_draws))
+        .map(|(game_id, _)| game_id)
+        .sum::<usize>()
+        .to_string()
 }
 
 pub fn run_second(input: &str) -> String {
@@ -17,7 +17,9 @@ pub fn run_second(input: &str) -> String {
             let (_game_id, game_draws) = parse_line(l);
             let (red, green, blue) = max_color_values(&game_draws);
             red * green * blue
-        }).sum::<usize>().to_string()
+        })
+        .sum::<usize>()
+        .to_string()
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -46,7 +48,9 @@ struct GameDraws {
 }
 
 fn is_valid_game(constraints: (i64, i64, i64), game_draws: &[GameDraws]) -> bool {
-    game_draws.iter().all(|game_draw| is_valid_game_draw(constraints, game_draw))
+    game_draws
+        .iter()
+        .all(|game_draw| is_valid_game_draw(constraints, game_draw))
 }
 
 fn max_color_values(game_draws: &Vec<GameDraws>) -> (usize, usize, usize) {
@@ -59,7 +63,7 @@ fn max_color_values(game_draws: &Vec<GameDraws>) -> (usize, usize, usize) {
             match draw.color {
                 Color::Red => red = red.max(draw.value),
                 Color::Green => green = green.max(draw.value),
-                Color::Blue => blue = blue.max(draw.value)
+                Color::Blue => blue = blue.max(draw.value),
             }
         }
     }
@@ -81,22 +85,29 @@ fn is_valid_game_draw(constraints: (i64, i64, i64), game_draw: &GameDraws) -> bo
     red >= 0 && green >= 0 && blue >= 0
 }
 
-
 fn parse_line(line: &str) -> (usize, Vec<GameDraws>) {
     let parts = line.split(':').collect::<Vec<_>>();
     let game_str = parts[0];
-    let game_id = game_str.split(' ').nth(1).unwrap().parse::<usize>().unwrap();
+    let game_id = game_str
+        .split(' ')
+        .nth(1)
+        .unwrap()
+        .parse::<usize>()
+        .unwrap();
 
     let draws_str = parts[1];
-    let draws = draws_str.split(';').
-        map(parse_game_draws)
+    let draws = draws_str
+        .split(';')
+        .map(parse_game_draws)
         .collect::<Vec<_>>();
 
     (game_id, draws)
 }
 
 fn parse_game_draws(line: &str) -> GameDraws {
-    GameDraws { draws: line.split(',').map(parse_draw).collect::<Vec<_>>() }
+    GameDraws {
+        draws: line.split(',').map(parse_draw).collect::<Vec<_>>(),
+    }
 }
 
 fn parse_draw(line: &str) -> Draw {
@@ -117,16 +128,28 @@ mod tests {
 
     #[test]
     fn test_parse_draw() {
-        assert_eq!(parse_draw("3 blue"), Draw { color: Color::Blue, value: 3 });
+        assert_eq!(
+            parse_draw("3 blue"),
+            Draw {
+                color: Color::Blue,
+                value: 3
+            }
+        );
     }
 
     #[test]
     fn test_parse_game_draws() {
         let expected = GameDraws {
             draws: vec![
-                Draw { color: Color::Blue, value: 3 },
-                Draw { color: Color::Red, value: 4 },
-            ]
+                Draw {
+                    color: Color::Blue,
+                    value: 3,
+                },
+                Draw {
+                    color: Color::Red,
+                    value: 4,
+                },
+            ],
         };
         assert_eq!(parse_game_draws("3 blue, 4 red"), expected);
     }
@@ -134,26 +157,45 @@ mod tests {
     #[test]
     fn test_parse_line() {
         let line = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green";
-        let expected = (1, vec![
-            GameDraws {
-                draws: vec![
-                    Draw { color: Color::Blue, value: 3 },
-                    Draw { color: Color::Red, value: 4 },
-                ]
-            },
-            GameDraws {
-                draws: vec![
-                    Draw { color: Color::Red, value: 1 },
-                    Draw { color: Color::Green, value: 2 },
-                    Draw { color: Color::Blue, value: 6 },
-                ]
-            },
-            GameDraws {
-                draws: vec![
-                    Draw { color: Color::Green, value: 2 },
-                ]
-            },
-        ]);
+        let expected = (
+            1,
+            vec![
+                GameDraws {
+                    draws: vec![
+                        Draw {
+                            color: Color::Blue,
+                            value: 3,
+                        },
+                        Draw {
+                            color: Color::Red,
+                            value: 4,
+                        },
+                    ],
+                },
+                GameDraws {
+                    draws: vec![
+                        Draw {
+                            color: Color::Red,
+                            value: 1,
+                        },
+                        Draw {
+                            color: Color::Green,
+                            value: 2,
+                        },
+                        Draw {
+                            color: Color::Blue,
+                            value: 6,
+                        },
+                    ],
+                },
+                GameDraws {
+                    draws: vec![Draw {
+                        color: Color::Green,
+                        value: 2,
+                    }],
+                },
+            ],
+        );
         assert_eq!(parse_line(line), expected);
     }
 
