@@ -243,6 +243,11 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: "The sum of total parts:",
                 secondMessage: "The sum of all gear ratios:"
             },
+            {
+                value: 4,
+                firstMessage: "The total of points:",
+                secondMessage: "The num of scratchcards:"
+            },
         ]
     }
 ];
