@@ -248,6 +248,18 @@ export const solvedProblems: SolvedYearProblems[] = [
                 firstMessage: "The total of points:",
                 secondMessage: "The num of scratchcards:"
             },
+            {
+                value: 5,
+                firstMessage: {
+                    display: "span",
+                    text: "Lowest location:"
+                },
+                secondMessage: {
+                    display: "span",
+                    longBruteforce: true,
+                    text: "Lowest location for ranges:"
+                }
+            },
         ]
     }
 ];
